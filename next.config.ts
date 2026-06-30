@@ -1,10 +1,9 @@
-import type { NextConfig } from "next";
-
+/** @type {import('next').NextConfig} */
 const basePath = process.env.NODE_ENV === "production" ? "/Resume-Nextjs" : "";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   output: "export",
-  basePath,
+  basePath: basePath,
   assetPrefix: basePath,
   images: {
     unoptimized: true,
