@@ -1,0 +1,82 @@
+{
+  "workData": [
+    {
+      "image": "/images/work/fatora.png",
+      "title": "Fatora",
+      "slug": "SAAS",
+      "href": "https://fatora.cloud/"
+    },
+    {
+      "image": "/images/work/ksalaunchpad.png",
+      "title": "KSA Launchpad",
+      "slug": "SAAS",
+      "href": "http://ksalaunchpad.com/"
+    },
+    {
+      "image": "/images/work/enfohub.png",
+      "title": "Enfohub",
+      "slug": "SAAS",
+      "href": "https://enfohub.com/"
+    },
+    {
+      "image": "/images/work/EasyFit.png",
+      "title": "Easy Fit",
+      "slug": "SAAS",
+      "href": "https://github.com/Zaid-Ahmed-404/easy-fit"
+    },
+    {
+      "image": "/images/work/vco.png",
+      "title": "VCO",
+      "slug": "Website",
+      "href": "https://vco.sa/"
+    },
+    {
+      "image": "/images/work/speak_and_translate.png",
+      "title": "Speak and Translate",
+      "slug": "App",
+      "href": "https://play.google.com/store/apps/details?id=com.parityzone.speakandtranslate&hl=en"
+    },
+    {
+      "image": "/images/work/riser.png",
+      "title": "RISER: Jobs, Video & Career AI",
+      "slug": "App",
+      "href": "https://apps.apple.com/us/app/riser-jobs-video-career-ai/id6476504113"
+    },
+    {
+      "image": "/images/work/backgroundremover.png",
+      "title": "Ai Image Background Changer",
+      "slug": "App",
+      "href": "https://play.google.com/store/apps/details?id=com.meraki.background.changer.app&hl=en"
+    },
+    {
+      "image": "/images/work/AI-Magic-Box.png",
+      "title": "AI Magic Box",
+      "slug": "App",
+      "href": "https://github.com/ZaidAhmed404/AI-Magic-Box"
+    },
+    {
+      "image": "/images/work/Alert-Mate.png",
+      "title": "Alert Mate",
+      "slug": "App",
+      "href": "https://github.com/ZaidAhmed404/Alert-Mate"
+    },
+    {
+      "image": "/images/work/Sehat-Sakoon.png",
+      "title": "Sehat Sakoon",
+      "slug": "App",
+      "href": "https://github.com/ZaidAhmed404/Sehat-Sakoon"
+    },
+    {
+      "image": "/images/work/Shop-Swift.png",
+      "title": "Shop Swift",
+      "slug": "App",
+      "href": "https://github.com/ZaidAhmed404/Shop-Swift"
+    },
+    {
+      "image": "/images/work/miracle.png",
+      "title": "Miracle: AI Art Generator Tool",
+      "slug": "App",
+      "href": "https://www.appbrain.com/app/miracle-ai-art-generator-tool/com.meraki.ai.art.generator"
+    }
+  ]
+}

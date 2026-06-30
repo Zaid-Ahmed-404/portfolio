@@ -1,0 +1,94 @@
+{
+  "contactBar": {
+    "contactItems": [
+      {
+        "type": "email",
+        "label": "itszaidahmed7861@gmail.com",
+        "icon": "/images/icon/mail-icon.svg",
+        "link": "mailto:itszaidahmed7861@gmail.com"
+      },
+      {
+        "type": "phone",
+        "label": "+966 53 928 6225",
+        "icon": "/images/icon/call-icon.svg",
+        "link": "tel:+966539286225"
+      }
+    ],
+    "socialItems": [
+      {
+        "platform": "linkedin",
+        "icon": "/images/icon/linkedin-icon.svg",
+        "link": "https://www.linkedin.com/in/zaid-ahmed-779b55211/"
+      },
+      {
+        "platform": "github",
+        "icon": "/images/icon/github-icon.svg",
+        "link": "https://github.com/Zaid-Ahmed-404"
+      }
+    ]
+  },
+  "educationData": {
+    "education": [
+      {
+        "title": "Bachelor's in Computer Science (Major: AI) | COMSATS University Islamabad - 2022",
+        "description": "Graduated with a focus on Artificial Intelligence, building a strong foundation in computational theory, algorithm design, and software engineering principles that support current full-stack development expertise."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Laravel",
+        "icon": "/images/home/education-skill/laravel.webp",
+        "rating": 4
+      },
+      {
+        "name": "Flutter",
+        "icon": "/images/home/education-skill/flutter.webp",
+        "rating": 4
+      },
+      {
+        "name": "Github",
+        "icon": "/images/home/education-skill/github-icon.svg",
+        "rating": 5
+      },
+      {
+        "name": "AWS",
+        "icon": "/images/home/education-skill/aws.webp",
+        "rating": 3
+      },
+      {
+        "name": "Docker",
+        "icon": "/images/home/education-skill/docker.webp",
+        "rating": 3
+      },
+      {
+        "name": "CI/CD",
+        "icon": "/images/home/education-skill/ci-cd.svg",
+        "rating": 3
+      }
+    ]
+  },
+  "contactLinks": {
+    "socialLinks": [
+      {
+        "title": "Github",
+        "href": "https://github.com/Zaid-Ahmed-404"
+      },
+      {
+        "title": "LinkedIn",
+        "href": "https://www.linkedin.com/in/zaid-ahmed-779b55211/"
+      }
+    ],
+    "contactInfo": [
+      {
+        "type": "email",
+        "label": "itszaidahmed7861@gmail.com",
+        "link": "mailto:itszaidahmed7861@gmail.com"
+      },
+      {
+        "type": "phone",
+        "label": "+966 53 928 6225",
+        "link": "tel:+966539286225"
+      }
+    ]
+  }
+}
