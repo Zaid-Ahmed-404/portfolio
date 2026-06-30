@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const basePath = process.env.NODE_ENV === "production" ? "/Resume-Nextjs" : "";
+const basePath = process.env.NODE_ENV === "production" ? "/portfolio" : "";
 
 const nextConfig = {
   output: "export",
