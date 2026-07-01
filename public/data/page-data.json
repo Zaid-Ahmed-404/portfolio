@@ -37,7 +37,7 @@
     "skills": [
       {
         "name": "Laravel",
-        "icon": "/images/home/education-skill/laravel.webp",
+        "icon": "/images/home/education-skill/laravel.svg",
         "rating": 4
       },
       {

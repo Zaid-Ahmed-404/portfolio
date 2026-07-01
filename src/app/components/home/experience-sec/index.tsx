@@ -3,7 +3,7 @@ import React from 'react';
 const ExperienceSec = () => {
     const experiences = [
         {
-            year: "2022 - Present",
+            year: "2025 - Present",
             title: "Full-Stack Software Engineer",
             company: "https://amsksa.com/",
             type: "Full time",
@@ -23,6 +23,25 @@ const ExperienceSec = () => {
                 "Maintain and scale Laravel-based RESTful APIs for a high-traffic video hiring platform supporting over 5,000 active users.",
                 "Optimize MySQL database performance and manage production deployments via cPanel, ensuring a 5% improvement in data retrieval speed.",
                 "Develop AI-driven features leveraging Google Gemini AI to enhance platform matchmaking and user experience."
+            ]
+        }, {
+            year: "2023-2024",
+            title: "Software Engineer",
+            company: "https://meraki-it.pk/",
+            type: "Full time",
+            description: [
+                "Developed and maintained systems for 7+ commercial projects using Flutter/Laravel, integrating Firebase and NoSQL databases to enhance performance.",
+                "Leveraged Laravel MVC architecture and Git-based workflows to deliver maintainable and scalable RESTful APIs.",
+                "Collaborated closely with front-end teams to ensure smooth integration and delivery of features."
+            ]
+        }, {
+            year: "2022-2023",
+            title: "Backend Engineer",
+            company: "https://islamabad.comsats.edu.pk/",
+            type: "Full time",
+            description: [
+                "Designed and built a conference management system serving 5000+ users across 10+ countries, managing registrations, paper submissions, and scheduling.",
+                "Architected Laravel REST APIs with MySQL backends, focusing on scalability and modular structure."
             ]
         },
     ];
