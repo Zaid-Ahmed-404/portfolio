@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { getDataPath } from "@/utils/image";
 import Logo from "../logo";
 
 const Header = () => {
     const handleDownloadPDF = () => {
-        window.print();
+        const link = document.createElement("a");
+        link.href = getDataPath("/data/Zaid_Ahmed_Software_Engineer.pdf");
+        link.download = "Zaid_Ahmed_Software_Engineer.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
     return (
         <header className="navbar top-0 left-0 z-999 w-full absolute">

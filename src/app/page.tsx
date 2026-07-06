@@ -1,4 +1,5 @@
 import AboutMe from "./components/home/about-me"
+import Certificates from "./components/home/certificates"
 import EducationSkills from "./components/home/education-skills"
 import ExperienceSec from "./components/home/experience-sec"
 import HeroSection from "./components/home/hero-section"
@@ -14,6 +15,7 @@ const page = () => {
         <AboutMe />
         <ExperienceSec />
         <EducationSkills />
+        <Certificates />
         <LatestWork />
       </main>
     </>
