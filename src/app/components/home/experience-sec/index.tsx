@@ -9,10 +9,10 @@ const ExperienceSec = () => {
             company: "https://amsksa.com/",
             type: "Full time",
             description: [
-                "Architected and deployed high-performance Flutter/Laravel systems on AWS and cPanel, consistently achieving a 5% increase in system uptime.",
-                "Engineered localized backend solutions including ZATCA e-invoicing compliance, MyFatoorah/moyasar/Tamara payment gateway integration, and 4Jawaly SMS services to meet regional regulatory standards.",
-                "Spearheaded the implementation of CI/CD pipelines, increasing deployment frequency by 10% and streamlining development workflows.",
-                "Maintained high proficiency in Clean Architecture and MVC patterns to restructure codebases."
+                "Architected and deployed high-performance Flutter/Laravel systems on AWS and cPanel, leveraging a deep suite of third-party packages including Laravel Telescope, Laravel Audit, and Pusher consistently achieving a 5% increase in system uptime.",
+                "Engineered localized backend solutions, including ZATCA e-invoicing compliance, regional payment gateways (MyFatoorah, Moyasar, Tamara), and 4Jawaly SMS services to strictly align with regional regulatory standards.",
+                "Spearheaded the implementation of robust CI/CD pipelines, increasing deployment frequency by 10%, and streamlining engineering workflows.",
+                "Utilized Clean Architecture, MVC patterns, and Test-Driven Development (TDD) practices to restructure complex codebases and ensure high code quality."
             ]
         },
         {
