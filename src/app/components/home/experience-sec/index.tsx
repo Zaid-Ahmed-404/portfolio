@@ -1,4 +1,5 @@
 import React from 'react';
+import Reveal from '../../shared/reveal';
 
 const ExperienceSec = () => {
     const experiences = [
@@ -50,14 +51,16 @@ const ExperienceSec = () => {
         <section>
             <div className="py-16 md:py-32">
                 <div className="container mx-auto px-4">
-                    <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 md:mb-16">
-                        <h2>Experience</h2>
-                        <p className="text-xl text-primary">( 02 )</p>
-                    </div>
+                    <Reveal direction="up">
+                        <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 md:mb-16">
+                            <h2>Experience</h2>
+                            <p className="text-xl text-primary">( 02 )</p>
+                        </div>
+                    </Reveal>
 
                     <div className="space-y-7 md:space-y-12">
                         {experiences.map((exp, index) => (
-                            <div key={index} className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 md:gap-4 xl:gap-8 items-start relative">
+                            <Reveal key={index} direction="up" delay={index * 100} className="group grid grid-cols-1 sm:grid-cols-3 gap-2.5 md:gap-4 xl:gap-8 items-start relative transition-transform duration-300 hover:-translate-y-0.5">
                                 <div className="">
                                     <h3 className="font-bold mb-2 text-black">{exp.year}</h3>
                                     <h4 className="text-lg font-normal">{exp.title}</h4>
@@ -69,7 +72,7 @@ const ExperienceSec = () => {
                                     )}
 
                                     <div className="no-print absolute left-0 top-0 transform -translate-x-1/2">
-                                        <div className={`no-print w-3.5 h-3.5 rounded-full border-1 bg-white flex items-center justify-center ${index === 1 ? 'border-primary' : 'border-black'}`}>
+                                        <div className={`no-print w-3.5 h-3.5 rounded-full border-1 bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-125 ${index === 1 ? 'border-primary' : 'border-black'}`}>
                                             {index === 1 && (
                                                 <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                                             )}
@@ -78,7 +81,7 @@ const ExperienceSec = () => {
 
                                     <div className="pl-4 lg:pl-7">
                                         <div className="flex items-center gap-2 mb-1">
-                                            <span className="text-xl text-black font-normal">{exp.company}</span>
+                                            <span className="text-xl text-black font-normal transition-colors duration-300 group-hover:text-primary">{exp.company}</span>
                                         </div>
                                         <p className="text-base font-normal">{exp.type}</p>
                                     </div>
@@ -91,7 +94,7 @@ const ExperienceSec = () => {
                                         ))}
                                     </ul>
                                 </div>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>

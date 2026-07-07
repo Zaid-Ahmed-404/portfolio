@@ -1,5 +1,6 @@
 import { getImgPath } from "@/utils/image";
 import Image from "next/image";
+import Reveal from "../../shared/reveal";
 
 const AboutMe = () => {
   return (
@@ -17,23 +18,25 @@ const AboutMe = () => {
 
         <div className="relative z-10">
           <div className="container">
-            <div className="flex items-center justify-between gap-2 border-b border-black pb-7">
-              <h2>About Me</h2>
-              <p className="text-xl text-primary">( 01 )</p>
-            </div>
+            <Reveal direction="up">
+              <div className="flex items-center justify-between gap-2 border-b border-black pb-7">
+                <h2>About Me</h2>
+                <p className="text-xl text-primary">( 01 )</p>
+              </div>
+            </Reveal>
 
             <div className="pt-10 xl:pt-16 flex gap-10 items-center justify-between">
-              <div className="w-[303px] h-[440px] hidden lg:flex">
+              <Reveal direction="left" delay={100} className="w-[303px] h-[440px] hidden lg:flex">
                 <Image
                   src={getImgPath("/images/home/about-me/about-banner-img.svg")}
                   alt="about-banner"
                   width={303}
                   height={440}
-                  className="w-full h-full"
+                  className="w-full h-full transition-transform duration-500 ease-out hover:scale-[1.03]"
                 />
-              </div>
+              </Reveal>
 
-              <div className="w-full lg:max-w-2xl flex-1">
+              <Reveal direction="right" delay={160} className="w-full lg:max-w-2xl flex-1">
                 <p>
                   Full-Stack Software Engineer specializing in Flutter and Laravel. Proven track record of delivering production-grade applications for international clients and optimizing system performance with extensive experience in AWS, Hostinger, and cPanel.
                 </p>
@@ -44,7 +47,7 @@ const AboutMe = () => {
                     { count: "20+", label: "Happy Clients" },
                     { count: "30+", label: "Project Completed" },
                   ].map((item, i) => (
-                    <div key={i}>
+                    <div key={i} className="transition-transform duration-300 hover:-translate-y-1">
                       <h3>{item.count}</h3>
                       <p className="text-base md:text-lg text-black">
                         {item.label}
@@ -67,14 +70,14 @@ const AboutMe = () => {
                     {["English", "Arabic", "Urdu"].map((lang) => (
                       <p
                         key={lang}
-                        className="bg-white py-2 md:py-3.5 px-4 md:px-5 w-fit rounded-full text-base xl:text-xl"
+                        className="bg-white py-2 md:py-3.5 px-4 md:px-5 w-fit rounded-full text-base xl:text-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:text-primary"
                       >
                         {lang}
                       </p>
                     ))}
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>

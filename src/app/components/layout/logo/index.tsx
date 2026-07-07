@@ -5,7 +5,7 @@ import Link from "next/link";
 const Logo = () => {
   return (
     <>
-      <Link href="/">
+      <Link href="/" className="inline-block transition-transform duration-300 ease-out hover:scale-105 active:scale-95">
         <Image
           src={getImgPath("/images/logo/logo.png")}
           alt="logo"

@@ -3,6 +3,7 @@ import { getDataPath, getImgPath } from "@/utils/image";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Reveal from "../../shared/reveal";
 
 interface WorkItem {
   title: string;
@@ -38,18 +39,20 @@ const LatestWork = () => {
   return (
     <section className="bg-softGray py-16 xl:py-32">
       <div className="container">
-        <div className="flex items-end justify-between gap-4 border-b border-neutral-300 pb-8 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Latest Works</h2>
-          <span className="text-lg font-medium text-orange-500">
-            {String(workData.length).padStart(2, '0')} Projects
-          </span>
-        </div>
+        <Reveal direction="up">
+          <div className="flex items-end justify-between gap-4 border-b border-neutral-300 pb-8 mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Latest Works</h2>
+            <span className="text-lg font-medium text-orange-500">
+              {String(workData.length).padStart(2, '0')} Projects
+            </span>
+          </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
           {workData.map((item, index) => (
-            <div key={index} className="group flex flex-col gap-4">
+            <Reveal key={index} direction="up" delay={index * 100} className="group flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1.5">
               {/* Image Card */}
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-neutral-200">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-neutral-200 shadow-none transition-shadow duration-300 group-hover:shadow-xl">
                 <Image
                   src={getImgPath(item.image)}
                   alt={item.title}
@@ -62,7 +65,7 @@ const LatestWork = () => {
                   rel="noopener noreferrer"
                   className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100"
                 >
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 shadow-lg">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 shadow-lg scale-90 transition-transform duration-300 group-hover:scale-100">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M7 17L17 7M7 7h10v10" />
                     </svg>
@@ -81,7 +84,7 @@ const LatestWork = () => {
                   <h5 className="text-xl font-bold text-neutral-900 group-hover:text-orange-600 transition-colors">
                     {item.title}
                   </h5>
-                  <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
                     <Image
                       src={getImgPath("/images/icon/right-arrow-icon.svg")}
                       alt="Open project"
@@ -91,7 +94,7 @@ const LatestWork = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
