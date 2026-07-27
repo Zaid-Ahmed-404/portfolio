@@ -9,10 +9,11 @@ const ExperienceSec = () => {
             company: "https://amsksa.com/",
             type: "Full time",
             description: [
-                "Architected and deployed high-performance Flutter/Laravel systems on AWS and cPanel, leveraging a deep suite of third-party packages including Laravel Telescope, Laravel Audit, and Pusher consistently achieving a 5% increase in system uptime.",
-                "Engineered localized backend solutions, including ZATCA e-invoicing compliance, regional payment gateways (MyFatoorah, Moyasar, Tamara), and 4Jawaly SMS services to strictly align with regional regulatory standards.",
-                "Spearheaded the implementation of robust CI/CD pipelines, increasing deployment frequency by 10%, and streamlining engineering workflows.",
-                "Utilized Clean Architecture, MVC patterns, and Test-Driven Development (TDD) practices to restructure complex codebases and ensure high code quality."
+                "Architected and deployed high-performance enterprise applications utilizing Java and Spring Boot microservices alongside Flutter backends on AWS, consistently achieving a 5% increase in system uptime.",
+                "Engineered localized backend microservices in Spring Boot, integrating ZATCA e-invoicing compliance APIs, regional payment gateways (MyFatoorah, Moyasar), and 4Jawaly SMS services to strictly align with regional regulatory standards.",
+                "Implemented robust security standards using Spring Security, JWT, and RBAC, alongside Spring Data JPA/Hibernate for optimized database transactions and query execution.",
+                "Spearheaded automated CI/CD pipelines for containerized Spring Boot applications using Docker and AWS ECS/ECR, increasing deployment frequency by 10% and streamlining engineering workflows.",
+                "Leveraged Clean Architecture, Domain-Driven Design (DDD), and Test-Driven Development (TDD) using JUnit and Mockito to restructure complex codebases and ensure zero-downtime releases."
             ]
         },
         {

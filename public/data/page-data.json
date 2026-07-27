@@ -36,6 +36,11 @@
     ],
     "skills": [
       {
+        "name": "Spring Framework",
+        "icon": "/images/home/education-skill/spring.png",
+        "rating": 4
+      },
+      {
         "name": "Laravel",
         "icon": "/images/home/education-skill/laravel.svg",
         "rating": 4
