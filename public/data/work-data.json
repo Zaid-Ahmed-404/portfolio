@@ -31,6 +31,18 @@
       "href": "https://vco.sa/"
     },
     {
+      "image": "/images/work/1.png",
+      "title": "GrowAndGrown",
+      "slug": "Website",
+      "href": "https://growandgrown.com/"
+    },
+    {
+      "image": "/images/work/2.png",
+      "title": "BuildxSmart",
+      "slug": "Website",
+      "href": "https://buildxsmart.sa/"
+    },
+    {
       "image": "/images/work/speak_and_translate.png",
       "title": "Speak and Translate",
       "slug": "App",
