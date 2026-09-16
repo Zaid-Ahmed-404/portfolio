@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
 html {
   scroll-behavior: smooth;
 }
@@ -9,7 +7,17 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
+  background-color: #ffffff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #ffffff;
 }
 
 a,
@@ -70,20 +78,36 @@ button {
   }
 }
 
-button::before {
+/* Fill-on-hover button */
+.btn-swipe {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.btn-swipe::before {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background-color: #FE4300;
-  transition: height 0.3s ease;
+  inset: 0;
+  background-color: var(--color-ink);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 0;
 }
 
-button:hover::before {
-  height: 100%;
+.btn-swipe:hover::before {
+  transform: translateY(0%);
+}
+
+.btn-swipe>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle dot-grid background used behind the hero */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--color-line) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 .wave {
@@ -128,61 +152,59 @@ button:hover::before {
   }
 }
 
-
-
-
-
 @theme {
   --color-primary: #FE4300;
-  --color-secondary: #868686;
-  --color-softGray: #F0F0F0;
-  --color-mistGray: #D7DCDD;
-  --color-gray: #C0D8E0;
+  --color-primary-hover: #E23A00;
+  --color-ink: #141414;
+  --color-body: #5B5F66;
+  --color-muted: #9A9CA0;
+  --color-surface: #FAF9F7;
+  --color-line: #E7E5E1;
 
   --breakpoint-xs: 425px;
 }
 
 @layer utilities {
   .container {
-    @apply w-full max-w-[80rem] mx-auto mt-0 mb-0 py-0 sm:px-7 px-5;
+    @apply w-full max-w-[75rem] mx-auto mt-0 mb-0 py-0 sm:px-8 px-5;
   }
 
-  .label {
-    @apply text-secondary text-sm font-normal;
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-primary;
   }
 
-  .input {
-    @apply w-full border-b border-gray focus:border-primary focus:outline-none py-2;
+  .section-index {
+    @apply text-sm md:text-base font-medium text-muted tabular-nums;
   }
 }
 
 @layer base {
   h1 {
-    @apply text-3xl md:text-4xl xl:text-6xl 2xl:text-[72px] font-semibold leading-tight;
+    @apply text-4xl md:text-5xl xl:text-6xl 2xl:text-[68px] font-semibold leading-[1.05] tracking-tight text-ink;
   }
 
   h2 {
-    @apply text-3xl md:text-5xl lg:text-6xl xl:text-[65px] font-semibold;
+    @apply text-3xl md:text-4xl lg:text-[42px] font-semibold leading-tight tracking-tight text-ink;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold;
+    @apply text-xl md:text-2xl font-semibold tracking-tight text-ink;
   }
 
   h4 {
-    @apply text-4xl;
+    @apply text-lg md:text-xl font-semibold text-ink;
   }
 
   h5 {
-    @apply text-xl xl:text-2xl;
+    @apply text-lg xl:text-xl font-semibold text-ink;
   }
 
   h6 {
-    @apply text-sm md:text-base xl:text-xl;
+    @apply text-sm md:text-base font-medium text-ink;
   }
 
   p {
-    @apply text-base text-secondary;
+    @apply text-base leading-relaxed text-body;
   }
 }
 

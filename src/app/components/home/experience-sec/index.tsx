@@ -1,107 +1,109 @@
-import React from 'react';
-import Reveal from '../../shared/reveal';
+import Reveal from "../../shared/reveal";
+import SectionHeading from "../../shared/section-heading";
+
+const experiences = [
+  {
+    year: "2025 - Present",
+    title: "Full-Stack Software Engineer",
+    company: "https://amsksa.com/",
+    type: "Full time",
+    description: [
+      "Architected and deployed high-performance enterprise applications utilizing Java and Spring Boot microservices alongside Flutter backends on AWS, consistently achieving a 5% increase in system uptime.",
+      "Engineered localized backend microservices in Spring Boot, integrating ZATCA e-invoicing compliance APIs, regional payment gateways (MyFatoorah, Moyasar), and 4Jawaly SMS services to strictly align with regional regulatory standards.",
+      "Implemented robust security standards using Spring Security, JWT, and RBAC, alongside Spring Data JPA/Hibernate for optimized database transactions and query execution.",
+      "Spearheaded automated CI/CD pipelines for containerized Spring Boot applications using Docker and AWS ECS/ECR, increasing deployment frequency by 10% and streamlining engineering workflows.",
+      "Leveraged Clean Architecture, Domain-Driven Design (DDD), and Test-Driven Development (TDD) using JUnit and Mockito to restructure complex codebases and ensure zero-downtime releases.",
+    ],
+  },
+  {
+    year: "2024",
+    title: "Backend Engineer",
+    company: "https://riserapp.co.uk/",
+    type: "Remote",
+    description: [
+      "Maintain and scale Laravel-based RESTful APIs for a high-traffic video hiring platform supporting over 5,000 active users.",
+      "Optimize MySQL database performance and manage production deployments via cPanel, ensuring a 5% improvement in data retrieval speed.",
+      "Develop AI-driven features leveraging Google Gemini AI to enhance platform matchmaking and user experience.",
+    ],
+  },
+  {
+    year: "2023-2024",
+    title: "Software Engineer",
+    company: "https://meraki-it.pk/",
+    type: "Full time",
+    description: [
+      "Developed and maintained systems for 7+ commercial projects using Flutter/Laravel, integrating Firebase and NoSQL databases to enhance performance.",
+      "Leveraged Laravel MVC architecture and Git-based workflows to deliver maintainable and scalable RESTful APIs.",
+      "Collaborated closely with front-end teams to ensure smooth integration and delivery of features.",
+    ],
+  },
+  {
+    year: "2022-2023",
+    title: "Backend Engineer",
+    company: "https://islamabad.comsats.edu.pk/",
+    type: "Full time",
+    description: [
+      "Designed and built a conference management system serving 5000+ users across 10+ countries, managing registrations, paper submissions, and scheduling.",
+      "Architected Laravel REST APIs with MySQL backends, focusing on scalability and modular structure.",
+    ],
+  },
+];
 
 const ExperienceSec = () => {
-    const experiences = [
-        {
-            year: "2025 - Present",
-            title: "Full-Stack Software Engineer",
-            company: "https://amsksa.com/",
-            type: "Full time",
-            description: [
-                "Architected and deployed high-performance enterprise applications utilizing Java and Spring Boot microservices alongside Flutter backends on AWS, consistently achieving a 5% increase in system uptime.",
-                "Engineered localized backend microservices in Spring Boot, integrating ZATCA e-invoicing compliance APIs, regional payment gateways (MyFatoorah, Moyasar), and 4Jawaly SMS services to strictly align with regional regulatory standards.",
-                "Implemented robust security standards using Spring Security, JWT, and RBAC, alongside Spring Data JPA/Hibernate for optimized database transactions and query execution.",
-                "Spearheaded automated CI/CD pipelines for containerized Spring Boot applications using Docker and AWS ECS/ECR, increasing deployment frequency by 10% and streamlining engineering workflows.",
-                "Leveraged Clean Architecture, Domain-Driven Design (DDD), and Test-Driven Development (TDD) using JUnit and Mockito to restructure complex codebases and ensure zero-downtime releases."
-            ]
-        },
-        {
-            year: "2024",
-            title: "Backend Engineer",
-            company: "https://riserapp.co.uk/",
-            type: "Remote",
-            description: [
-                "Maintain and scale Laravel-based RESTful APIs for a high-traffic video hiring platform supporting over 5,000 active users.",
-                "Optimize MySQL database performance and manage production deployments via cPanel, ensuring a 5% improvement in data retrieval speed.",
-                "Develop AI-driven features leveraging Google Gemini AI to enhance platform matchmaking and user experience."
-            ]
-        }, {
-            year: "2023-2024",
-            title: "Software Engineer",
-            company: "https://meraki-it.pk/",
-            type: "Full time",
-            description: [
-                "Developed and maintained systems for 7+ commercial projects using Flutter/Laravel, integrating Firebase and NoSQL databases to enhance performance.",
-                "Leveraged Laravel MVC architecture and Git-based workflows to deliver maintainable and scalable RESTful APIs.",
-                "Collaborated closely with front-end teams to ensure smooth integration and delivery of features."
-            ]
-        }, {
-            year: "2022-2023",
-            title: "Backend Engineer",
-            company: "https://islamabad.comsats.edu.pk/",
-            type: "Full time",
-            description: [
-                "Designed and built a conference management system serving 5000+ users across 10+ countries, managing registrations, paper submissions, and scheduling.",
-                "Architected Laravel REST APIs with MySQL backends, focusing on scalability and modular structure."
-            ]
-        },
-    ];
+  return (
+    <section id="experience">
+      <div className="container py-16 md:py-28">
+        <SectionHeading index="02" title="Experience" />
 
-    return (
-        <section>
-            <div className="py-16 md:py-32">
-                <div className="container mx-auto px-4">
-                    <Reveal direction="up">
-                        <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 md:mb-16">
-                            <h2>Experience</h2>
-                            <p className="text-xl text-primary">( 02 )</p>
-                        </div>
-                    </Reveal>
+        <div className="flex flex-col">
+          {experiences.map((exp, index) => (
+            <Reveal
+              key={index}
+              direction="up"
+              delay={index * 90}
+              className="group relative grid grid-cols-1 gap-4 border-b border-line py-9 first:pt-0 last:border-b-0 md:grid-cols-[180px_1fr] md:gap-8 lg:grid-cols-[200px_1fr]"
+            >
+              <div className="flex items-center gap-2 md:flex-col md:items-start md:gap-2">
+                <span className="text-sm font-semibold tracking-tight text-ink">
+                  {exp.year}
+                </span>
+                <span className="rounded-full border border-line px-3 py-1 text-xs font-medium text-muted">
+                  {exp.type}
+                </span>
+              </div>
 
-                    <div className="space-y-7 md:space-y-12">
-                        {experiences.map((exp, index) => (
-                            <Reveal key={index} direction="up" delay={index * 100} className="group grid grid-cols-1 sm:grid-cols-3 gap-2.5 md:gap-4 xl:gap-8 items-start relative transition-transform duration-300 hover:-translate-y-0.5">
-                                <div className="">
-                                    <h3 className="font-bold mb-2 text-black">{exp.year}</h3>
-                                    <h4 className="text-lg font-normal">{exp.title}</h4>
-                                </div>
-
-                                <div className="relative">
-                                    {index < experiences.length && (
-                                        <div className={`absolute left-0 top-3 w-px ${index < experiences.length - 1 ? 'h-40' : 'h-30'} bg-softGray`}></div>
-                                    )}
-
-                                    <div className="no-print absolute left-0 top-0 transform -translate-x-1/2">
-                                        <div className={`no-print w-3.5 h-3.5 rounded-full border-1 bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-125 ${index === 1 ? 'border-primary' : 'border-black'}`}>
-                                            {index === 1 && (
-                                                <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div className="pl-4 lg:pl-7">
-                                        <div className="flex items-center gap-2 mb-1">
-                                            <span className="text-xl text-black font-normal transition-colors duration-300 group-hover:text-primary">{exp.company}</span>
-                                        </div>
-                                        <p className="text-base font-normal">{exp.type}</p>
-                                    </div>
-                                </div>
-
-                                <div className="pl-8 sm:pl-0">
-                                    <ul className="list-disc space-y-2">
-                                        {exp.description.map((item, i) => (
-                                            <li key={i} className="leading-relaxed text-base">{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </Reveal>
-                        ))}
-                    </div>
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="transition-colors duration-300 group-hover:text-primary">
+                    {exp.title}
+                  </h3>
+                  <a
+                    href={exp.company}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-primary hover:decoration-primary"
+                  >
+                    {exp.company.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                  </a>
                 </div>
-            </div>
-        </section>
-    );
+
+                <ul className="flex flex-col gap-2.5">
+                  {exp.description.map((item, i) => (
+                    <li
+                      key={i}
+                      className="relative pl-4 text-[15px] leading-relaxed text-body before:absolute before:left-0 before:top-[0.65em] before:h-1 before:w-1 before:rounded-full before:bg-muted"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ExperienceSec;

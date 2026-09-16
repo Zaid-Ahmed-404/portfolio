@@ -3,6 +3,7 @@ import { getDataPath, getImgPath } from "@/utils/image";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Reveal from "../../shared/reveal";
+import SectionHeading from "../../shared/section-heading";
 
 const EducationSkills = () => {
   const [educationData, setEductionData] = useState<any>(null);
@@ -23,84 +24,59 @@ const EducationSkills = () => {
   }, []);
 
   return (
-    <section>
-      <div className="border-t border-softGray overflow-hidden">
-        <div className="container relative z-10">
-          <Image
-            src={getImgPath(
-              "/images/home/education-skill/edu-skill-vector.svg"
-            )}
-            alt="vector"
-            width={260}
-            height={170}
-            className="no-print absolute top-0 left-0 transform -translate-y-1/2"
-          />
-          <div className="relative z-10 py-16 md:py-32">
-            <Reveal direction="up">
-              <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-9 xl:mb-16">
-                <h2>Education & Skills</h2>
-                <p className="text-xl text-orange-500">( 03 )</p>
-              </div>
-            </Reveal>
-            <div className="flex flex-col lg:flex-row items-center gap-10 xl:gap-20">
-              <div className="w-full lg:max-w-md flex flex-col gap-0 xl:gap-8">
-                {educationData?.education?.map((value: any, index: any) => {
-                  return (
-                    <Reveal key={index} direction="left" delay={index * 120} className="group flex items-start gap-6">
-                      <div className="no-print mt-2.5 w-3.5 h-3.5 rounded-full border-1 bg-white flex items-center justify-center border-black transition-transform duration-300 group-hover:scale-125">
-                        <div className="w-1.5 h-1.5 rounded-full bg-black"></div>
-                      </div>
-                      <div className="flex-1 flex flex-col gap-2">
-                        <h5 className="transition-colors duration-300 group-hover:text-primary">  {value?.title}</h5>
-                        <p className="font-normal">{value?.description}</p>
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </div>
-              <div className="grid grid-cols-2 xs:grid-cols-3 gap-5 xl:gap-7 w-full">
-                {educationData?.skills?.map((value: any, index: any) => {
-                  return (
-                    <Reveal
-                      key={index}
-                      direction="scale"
-                      delay={index * 80}
-                      className="group p-4 xl:p-6 border border-softGray rounded-lg flex flex-col gap-5 sm:gap-10 items-center justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/40"
-                    >
-                      <div className="flex flex-col items-center gap-5">
-                        <Image
-                          src={getImgPath(value?.icon)}
-                          alt="icon"
-                          width={70}
-                          height={70}
-                          className="transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <p className="text-black font-normal">{value?.name}</p>
-                      </div>
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <svg
-                            key={i}
-                            width="9"
-                            height="9"
-                            viewBox="0 0 9 9"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect
-                              width="9"
-                              height="9"
-                              rx="4.5"
-                              fill={i < value?.rating ? "#FE4300" : "#C0D8E0"}
-                            />
-                          </svg>
-                        ))}
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </div>
-            </div>
+    <section id="skills" className="bg-surface">
+      <div className="container py-16 md:py-28">
+        <SectionHeading index="03" title="Education & Skills" />
+
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="flex flex-col gap-8 lg:col-span-4">
+            {educationData?.education?.map((value: any, index: any) => (
+              <Reveal
+                key={index}
+                direction="left"
+                delay={index * 120}
+                className="group relative flex flex-col gap-2 rounded-2xl border border-line bg-white p-6"
+              >
+                <h5 className="transition-colors duration-300 group-hover:text-primary">
+                  {value?.title}
+                </h5>
+                <p className="text-sm leading-relaxed">{value?.description}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 xs:grid-cols-3 lg:col-span-8 lg:gap-5">
+            {educationData?.skills?.map((value: any, index: any) => (
+              <Reveal
+                key={index}
+                direction="scale"
+                delay={index * 80}
+                className="group flex flex-col items-center justify-between gap-5 rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lg xl:p-6"
+              >
+                <div className="flex flex-col items-center gap-4">
+                  <Image
+                    src={getImgPath(value?.icon)}
+                    alt={value?.name}
+                    width={56}
+                    height={56}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <p className="text-sm font-medium text-ink">{value?.name}</p>
+                </div>
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="8" height="8" viewBox="0 0 9 9" fill="none">
+                      <rect
+                        width="9"
+                        height="9"
+                        rx="4.5"
+                        fill={i < value?.rating ? "#FE4300" : "#E7E5E1"}
+                      />
+                    </svg>
+                  ))}
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>
