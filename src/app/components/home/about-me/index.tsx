@@ -1,74 +1,113 @@
-import { getImgPath } from "@/utils/image";
-import Image from "next/image";
+import { experiences, profile, stats } from "@/data/content";
+import { Briefcase, Globe, MapPin } from "../../shared/icons";
 import Reveal from "../../shared/reveal";
 import SectionHeading from "../../shared/section-heading";
+import Spotlight from "../../shared/spotlight";
 
-const stats = [
-  { count: "04", label: "Years of experience" },
-  { count: "20+", label: "Happy clients" },
-  { count: "30+", label: "Projects completed" },
-];
+const current = experiences.find((e) => e.current) ?? experiences[0];
 
 const AboutMe = () => {
   return (
-    <section id="about" className="bg-surface">
-      <div className="container py-16 md:py-28">
-        <SectionHeading index="01" title="About Me" />
+    <section id="about" className="relative">
+      <div className="container py-24 md:py-32">
+        <SectionHeading
+          eyebrow="About"
+          title={
+            <>
+              Turning complex requirements into{" "}
+              <span className="serif-accent text-accent">reliable</span> products.
+            </>
+          }
+        />
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal
-            direction="left"
-            delay={100}
-            className="lg:col-span-7 flex flex-col gap-8"
-          >
-            <p className="text-lg leading-relaxed">
-              Full-Stack Software Engineer specializing in Flutter and
-              Laravel. Proven track record of delivering production-grade
-              applications for international clients and optimizing system
-              performance, with extensive experience across AWS, Hostinger,
-              and cPanel environments.
-            </p>
-
-            <div className="flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-center">
-              <div className="flex items-center gap-3">
-                <Image
-                  src={getImgPath("/images/icon/lang-icon.svg")}
-                  alt=""
-                  width={26}
-                  height={26}
-                />
-                <p className="text-sm font-medium text-ink">Languages</p>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-6">
+          {/* Bio */}
+          <Reveal direction="up" className="md:col-span-4 md:row-span-2">
+            <Spotlight className="card flex h-full flex-col justify-between gap-10 p-7 md:p-9">
+              <div className="flex flex-col gap-5">
+                <p className="text-lg leading-relaxed text-fg md:text-xl">
+                  Full-Stack Software Engineer specializing in Flutter, Laravel
+                  and Spring Boot, with a proven track record of delivering
+                  production-grade applications for international clients.
+                </p>
+                <p className="leading-relaxed">
+                  I care about clean architecture, measurable performance and
+                  shipping with confidence — from designing secure,
+                  well-tested microservices to automating CI/CD pipelines and
+                  running workloads across AWS, Hostinger and cPanel
+                  environments.
+                </p>
               </div>
-              <div className="flex flex-wrap items-center gap-2.5">
-                {["English", "Arabic", "Urdu"].map((lang) => (
-                  <span
-                    key={lang}
-                    className="w-fit rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary hover:shadow-sm"
-                  >
+
+              <div className="grid grid-cols-3 gap-4 border-t border-line pt-7">
+                {stats.map((s) => (
+                  <div key={s.label} className="flex flex-col gap-1">
+                    <span className="text-3xl font-semibold tracking-tight text-fg md:text-5xl">
+                      {s.value}
+                    </span>
+                    <span className="text-xs text-muted md:text-sm">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            </Spotlight>
+          </Reveal>
+
+          {/* Current role */}
+          <Reveal direction="up" delay={80} className="md:col-span-2">
+            <Spotlight className="card flex h-full flex-col gap-4 p-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                <Briefcase size={18} />
+              </span>
+              <div>
+                <p className="eyebrow">Now</p>
+                <p className="mt-2 font-medium text-fg">{current.title}</p>
+                <a
+                  href={current.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-body underline decoration-line-strong underline-offset-4 hover:text-accent hover:decoration-accent"
+                >
+                  {current.company}
+                </a>
+              </div>
+            </Spotlight>
+          </Reveal>
+
+          {/* Location */}
+          <Reveal direction="up" delay={140} className="md:col-span-2">
+            <Spotlight className="card relative flex h-full flex-col gap-4 overflow-hidden p-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                <MapPin size={18} />
+              </span>
+              <div>
+                <p className="eyebrow">Based in</p>
+                <p className="mt-2 font-medium text-fg">{profile.location}</p>
+                <p className="text-sm">Open to remote &amp; on-site roles</p>
+              </div>
+            </Spotlight>
+          </Reveal>
+
+          {/* Languages */}
+          <Reveal direction="up" delay={200} className="md:col-span-6">
+            <Spotlight className="card flex h-full flex-col gap-5 p-7 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-4">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                  <Globe size={18} />
+                </span>
+                <div>
+                  <p className="eyebrow">Languages</p>
+                  <p className="mt-1 text-sm">Comfortable collaborating across regions</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {profile.languages.map((lang) => (
+                  <span key={lang} className="chip !px-4 !py-2 !text-sm !text-fg">
                     {lang}
                   </span>
                 ))}
               </div>
-            </div>
+            </Spotlight>
           </Reveal>
-
-          <div className="lg:col-span-5 grid grid-cols-3 gap-4 lg:grid-cols-1 lg:gap-4">
-            {stats.map((item, i) => (
-              <Reveal
-                key={i}
-                direction="right"
-                delay={i * 100}
-                className="group flex flex-col justify-between gap-2 rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg lg:flex-row lg:items-center lg:gap-4 lg:p-6"
-              >
-                <span className="text-3xl font-semibold tracking-tight text-primary md:text-4xl">
-                  {item.count}
-                </span>
-                <p className="text-sm font-medium text-ink lg:text-base">
-                  {item.label}
-                </p>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </div>
     </section>

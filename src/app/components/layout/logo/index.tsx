@@ -4,19 +4,16 @@ import Link from "next/link";
 
 const Logo = () => {
   return (
-    <Link
-      href="/"
-      className="inline-flex items-center gap-2.5 transition-transform duration-300 ease-out hover:scale-[1.02] active:scale-95"
-    >
+    <Link href="/" aria-label="Zaid Ahmed — home" className="group inline-flex items-center gap-2.5">
       <Image
         src={getImgPath("/images/logo/logo-mark.png")}
-        alt="Zaid Ahmed logo"
-        width={34}
-        height={34}
-        className="rounded-md"
+        alt=""
+        width={30}
+        height={30}
+        className="rounded-lg transition-transform duration-500 group-hover:rotate-[8deg]"
         priority
       />
-      <span className="text-sm font-semibold tracking-tight text-ink leading-none hidden xs:block">
+      <span className="hidden text-sm font-semibold tracking-tight text-fg xs:block">
         Zaid Ahmed
       </span>
     </Link>

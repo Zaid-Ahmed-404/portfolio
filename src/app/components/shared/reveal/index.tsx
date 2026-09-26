@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right" | "scale" | "fade";
 
@@ -10,6 +10,7 @@ interface RevealProps {
   className?: string;
   direction?: Direction;
   delay?: number;
+  as?: ElementType;
 }
 
 const Reveal = ({
@@ -17,8 +18,9 @@ const Reveal = ({
   className = "",
   direction = "up",
   delay = 0,
+  as: Tag = "div",
 }: RevealProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const Reveal = ({
           observer.unobserve(node);
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
     observer.observe(node);
@@ -40,13 +42,13 @@ const Reveal = ({
   }, []);
 
   return (
-    <div
+    <Tag
       ref={ref}
       className={`reveal reveal-${direction} ${visible ? "in-view" : ""} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </div>
+    </Tag>
   );
 };
 

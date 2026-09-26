@@ -1,24 +1,28 @@
+import type { ReactNode } from "react";
 import Reveal from "../reveal";
 
 interface SectionHeadingProps {
-  index: string;
-  title: string;
-  note?: string;
+  eyebrow: string;
+  title: ReactNode;
+  description?: string;
+  aside?: ReactNode;
 }
 
-const SectionHeading = ({ index, title, note }: SectionHeadingProps) => {
+const SectionHeading = ({ eyebrow, title, description, aside }: SectionHeadingProps) => {
   return (
     <Reveal direction="up">
-      <div className="flex items-end justify-between gap-6 border-b border-line pb-6 mb-10 md:mb-16">
-        <div className="flex items-baseline gap-3 md:gap-4">
-          <span className="section-index">{index}</span>
-          <h2>{title}</h2>
+      <div className="mb-12 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
+        <div className="flex max-w-2xl flex-col gap-4">
+          <span className="eyebrow">
+            <span className="h-px w-6 bg-accent" />
+            {eyebrow}
+          </span>
+          <h2 className="text-4xl font-semibold leading-[1.05] md:text-5xl lg:text-[56px]">
+            {title}
+          </h2>
+          {description && <p className="max-w-xl text-base leading-relaxed md:text-lg">{description}</p>}
         </div>
-        {note && (
-          <p className="hidden sm:block max-w-[14rem] text-right text-sm text-muted">
-            {note}
-          </p>
-        )}
+        {aside}
       </div>
     </Reveal>
   );
