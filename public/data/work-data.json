@@ -10,7 +10,7 @@
       "image": "/images/work/ksalaunchpad.png",
       "title": "KSA Launchpad",
       "slug": "SAAS",
-      "href": "http://ksalaunchpad.com/"
+      "href": "https://ksalaunchpad.com/"
     },
     {
       "image": "/images/work/enfohub.png",
@@ -35,6 +35,18 @@
       "title": "GrowAndGrown",
       "slug": "Website",
       "href": "https://growandgrown.com/"
+    },
+    {
+      "image": "/images/work/byb.png",
+      "title": "BYB",
+      "slug": "Website",
+      "href": "https://byb.sa/"
+    },
+    {
+      "image": "/images/work/structurelab.png",
+      "title": "Structure Lab",
+      "slug": "Website",
+      "href": "https://structurelab.cortalogixguild.com//"
     },
     {
       "image": "/images/work/2.png",
