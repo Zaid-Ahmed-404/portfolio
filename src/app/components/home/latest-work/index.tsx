@@ -1,17 +1,19 @@
 "use client";
 
 import { projects } from "@/data/content";
+import { format, getDictionary, type Locale } from "@/i18n";
 import { getImgPath } from "@/utils/image";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { ArrowDown, ArrowUpRight } from "../../shared/icons";
 import Reveal from "../../shared/reveal";
+import { AccentTitle } from "../../shared/rich-text";
 import SectionHeading from "../../shared/section-heading";
 
 const INITIAL_COUNT = 6;
+const ALL = "all";
 
-const categoryLabel = (slug: string) =>
-  slug.toUpperCase() === "SAAS" ? "SaaS" : slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase();
+const categoryKey = (slug: string) => slug.toLowerCase();
 
 const hostOf = (href: string) => {
   try {
@@ -25,36 +27,30 @@ const hostOf = (href: string) => {
   }
 };
 
-const LatestWork = () => {
-  const categories = useMemo(() => {
-    const unique = Array.from(new Set(projects.map((p) => categoryLabel(p.slug))));
-    return ["All", ...unique];
-  }, []);
+const LatestWork = ({ locale }: { locale: Locale }) => {
+  const t = getDictionary(locale).work;
 
-  const [filter, setFilter] = useState("All");
+  const categoryLabel = (key: string) =>
+    key === ALL ? t.all : t.categories[key] ?? key.charAt(0).toUpperCase() + key.slice(1);
+
+  const categories = useMemo(() => [ALL, ...Array.from(new Set(projects.map((p) => categoryKey(p.slug))))], []);
+
+  const [filter, setFilter] = useState(ALL);
   const [expanded, setExpanded] = useState(false);
 
-  const filtered = filter === "All" ? projects : projects.filter((p) => categoryLabel(p.slug) === filter);
+  const filtered = filter === ALL ? projects : projects.filter((p) => categoryKey(p.slug) === filter);
   const visible = expanded ? filtered : filtered.slice(0, INITIAL_COUNT);
 
   const countFor = (cat: string) =>
-    cat === "All" ? projects.length : projects.filter((p) => categoryLabel(p.slug) === cat).length;
+    cat === ALL ? projects.length : projects.filter((p) => categoryKey(p.slug) === cat).length;
 
   return (
     <section id="work" className="relative border-t border-line bg-surface/40">
       <div className="container py-24 md:py-32">
-        <SectionHeading
-          eyebrow="Selected work"
-          title={
-            <>
-              Products I&apos;ve helped <span className="serif-accent text-accent">bring to life.</span>
-            </>
-          }
-          description="SaaS platforms, business websites and mobile apps — shipped to production and used by real customers."
-        />
+        <SectionHeading eyebrow={t.eyebrow} title={<AccentTitle title={t.title} />} description={t.description} />
 
         <Reveal direction="up">
-          <div role="tablist" aria-label="Filter projects" className="mb-10 flex flex-wrap gap-2">
+          <div role="tablist" aria-label={t.filterLabel} className="mb-10 flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -70,7 +66,7 @@ const LatestWork = () => {
                     : "border-line bg-surface text-body hover:border-line-strong hover:text-fg"
                 }`}
               >
-                {cat}
+                {categoryLabel(cat)}
                 <span className={`font-mono text-xs ${filter === cat ? "opacity-60" : "text-muted"}`}>
                   {countFor(cat)}
                 </span>
@@ -92,14 +88,14 @@ const LatestWork = () => {
                   <div className="relative aspect-[16/11] overflow-hidden rounded-xl bg-surface">
                     <Image
                       src={getImgPath(item.image)}
-                      alt={`${item.title} preview`}
+                      alt={`${item.title} ${t.preview}`}
                       fill
                       sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
                       className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <span className="absolute right-3 top-3 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-white text-black opacity-0 shadow-lg transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                      <ArrowUpRight size={18} />
+                    <span className="absolute end-3 top-3 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-white text-black opacity-0 shadow-lg transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      <ArrowUpRight size={18} className="rtl:-scale-x-100" />
                     </span>
                   </div>
                 </div>
@@ -111,7 +107,7 @@ const LatestWork = () => {
                     </h3>
                     <p className="font-mono text-xs text-muted">{hostOf(item.href)}</p>
                   </div>
-                  <span className="chip shrink-0">{categoryLabel(item.slug)}</span>
+                  <span className="chip shrink-0">{categoryLabel(categoryKey(item.slug))}</span>
                 </div>
               </a>
             </Reveal>
@@ -121,7 +117,7 @@ const LatestWork = () => {
         {filtered.length > INITIAL_COUNT && (
           <div className="mt-14 flex justify-center">
             <button type="button" onClick={() => setExpanded((v) => !v)} className="btn-ghost group">
-              {expanded ? "Show less" : `Show all ${filtered.length} projects`}
+              {expanded ? t.showLess : format(t.showAll, { count: filtered.length })}
               <ArrowDown
                 size={16}
                 className={`transition-transform duration-300 ${expanded ? "rotate-180" : "group-hover:translate-y-0.5"}`}

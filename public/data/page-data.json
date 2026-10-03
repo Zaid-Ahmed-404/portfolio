@@ -28,12 +28,6 @@
     ]
   },
   "educationData": {
-    "education": [
-      {
-        "title": "Bachelor's in Computer Science (Major: AI) | COMSATS University Islamabad - 2022",
-        "description": "Graduated with a focus on Artificial Intelligence, building a strong foundation in computational theory, algorithm design, and software engineering principles that support current full-stack development expertise."
-      }
-    ],
     "skills": [
       {
         "name": "Spring Framework",

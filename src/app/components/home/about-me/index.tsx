@@ -1,48 +1,33 @@
-import { experiences, profile, stats } from "@/data/content";
+import { currentExperience as current } from "@/data/content";
+import { getDictionary, type Locale } from "@/i18n";
 import { Briefcase, Globe, MapPin } from "../../shared/icons";
 import Reveal from "../../shared/reveal";
+import { AccentTitle } from "../../shared/rich-text";
 import SectionHeading from "../../shared/section-heading";
 import Spotlight from "../../shared/spotlight";
 
-const current = experiences.find((e) => e.current) ?? experiences[0];
+const AboutMe = ({ locale }: { locale: Locale }) => {
+  const dict = getDictionary(locale);
+  const t = dict.about;
 
-const AboutMe = () => {
   return (
     <section id="about" className="relative">
       <div className="container py-24 md:py-32">
-        <SectionHeading
-          eyebrow="About"
-          title={
-            <>
-              Turning complex requirements into{" "}
-              <span className="serif-accent text-accent">reliable</span> products.
-            </>
-          }
-        />
+        <SectionHeading eyebrow={t.eyebrow} title={<AccentTitle title={t.title} />} />
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-6">
           {/* Bio */}
           <Reveal direction="up" className="md:col-span-4 md:row-span-2">
             <Spotlight className="card flex h-full flex-col justify-between gap-10 p-7 md:p-9">
               <div className="flex flex-col gap-5">
-                <p className="text-lg leading-relaxed text-fg md:text-xl">
-                  Full-Stack Software Engineer specializing in Flutter, Laravel
-                  and Spring Boot, with a proven track record of delivering
-                  production-grade applications for international clients.
-                </p>
-                <p className="leading-relaxed">
-                  I care about clean architecture, measurable performance and
-                  shipping with confidence — from designing secure,
-                  well-tested microservices to automating CI/CD pipelines and
-                  running workloads across AWS, Hostinger and cPanel
-                  environments.
-                </p>
+                <p className="text-lg leading-relaxed text-fg md:text-xl">{t.lead}</p>
+                <p className="leading-relaxed">{t.body}</p>
               </div>
 
               <div className="grid grid-cols-3 gap-4 border-t border-line pt-7">
-                {stats.map((s) => (
+                {t.stats.map((s) => (
                   <div key={s.label} className="flex flex-col gap-1">
-                    <span className="text-3xl font-semibold tracking-tight text-fg md:text-5xl">
+                    <span dir="ltr" className="text-3xl font-semibold tracking-tight text-fg md:text-5xl rtl:text-end">
                       {s.value}
                     </span>
                     <span className="text-xs text-muted md:text-sm">{s.label}</span>
@@ -59,8 +44,8 @@ const AboutMe = () => {
                 <Briefcase size={18} />
               </span>
               <div>
-                <p className="eyebrow">Now</p>
-                <p className="mt-2 font-medium text-fg">{current.title}</p>
+                <p className="eyebrow">{t.now}</p>
+                <p className="mt-2 font-medium text-fg">{dict.experience.items[current.id].title}</p>
                 <a
                   href={current.url}
                   target="_blank"
@@ -80,9 +65,9 @@ const AboutMe = () => {
                 <MapPin size={18} />
               </span>
               <div>
-                <p className="eyebrow">Based in</p>
-                <p className="mt-2 font-medium text-fg">{profile.location}</p>
-                <p className="text-sm">Open to remote &amp; on-site roles</p>
+                <p className="eyebrow">{t.basedIn}</p>
+                <p className="mt-2 font-medium text-fg">{dict.profile.location}</p>
+                <p className="text-sm">{t.openTo}</p>
               </div>
             </Spotlight>
           </Reveal>
@@ -95,12 +80,12 @@ const AboutMe = () => {
                   <Globe size={18} />
                 </span>
                 <div>
-                  <p className="eyebrow">Languages</p>
-                  <p className="mt-1 text-sm">Comfortable collaborating across regions</p>
+                  <p className="eyebrow">{t.languages}</p>
+                  <p className="mt-1 text-sm">{t.languagesNote}</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
-                {profile.languages.map((lang) => (
+                {dict.profile.languages.map((lang) => (
                   <span key={lang} className="chip !px-4 !py-2 !text-sm !text-fg">
                     {lang}
                   </span>

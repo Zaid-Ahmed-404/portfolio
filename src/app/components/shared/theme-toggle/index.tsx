@@ -1,10 +1,12 @@
 "use client";
 
+import { getDictionary, type Locale } from "@/i18n";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "../icons";
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ locale }: { locale: Locale }) => {
+  const t = getDictionary(locale).header;
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -15,7 +17,7 @@ const ThemeToggle = () => {
   return (
     <button
       type="button"
-      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      aria-label={isDark ? t.toLight : t.toDark}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="relative flex h-9 w-9 cursor-pointer items-center justify-center overflow-hidden rounded-full text-body transition-colors hover:bg-surface-2 hover:text-fg"
     >

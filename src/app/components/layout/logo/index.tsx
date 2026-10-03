@@ -1,10 +1,13 @@
+import { getDictionary, localeHome, type Locale } from "@/i18n";
 import { getImgPath } from "@/utils/image";
 import Image from "next/image";
 import Link from "next/link";
 
-const Logo = () => {
+const Logo = ({ locale }: { locale: Locale }) => {
+  const t = getDictionary(locale);
+
   return (
-    <Link href="/" aria-label="Zaid Ahmed — home" className="group inline-flex items-center gap-2.5">
+    <Link href={localeHome(locale)} aria-label={t.header.home} className="group inline-flex items-center gap-2.5">
       <Image
         src={getImgPath("/images/logo/logo-mark.png")}
         alt=""
@@ -14,7 +17,7 @@ const Logo = () => {
         priority
       />
       <span className="hidden text-sm font-semibold tracking-tight text-fg xs:block">
-        Zaid Ahmed
+        {t.profile.name}
       </span>
     </Link>
   );

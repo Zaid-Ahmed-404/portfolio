@@ -47,9 +47,9 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
 
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-geist), var(--font-plex-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), var(--font-plex-arabic), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), var(--font-amiri), ui-serif, Georgia, serif;
 
   --shadow-card: var(--shadow);
   --breakpoint-xs: 425px;
@@ -142,6 +142,26 @@ body {
 
 @utility btn-ghost {
   @apply btn border border-line-strong text-fg hover:bg-surface-2;
+}
+
+/* ---------- RTL / Arabic ---------- */
+/* Arabic is a connected script: letter-spacing breaks the joins, and tight
+   line-heights clip its taller glyphs. Latin islands (dir="ltr") keep theirs. */
+[dir="rtl"] :not([dir="ltr"], [dir="ltr"] *) {
+  letter-spacing: normal;
+}
+
+[dir="rtl"] h1 {
+  line-height: 1.2;
+}
+
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  line-height: 1.35;
+}
+
+[dir="rtl"] .serif-accent {
+  font-style: normal;
 }
 
 /* ---------- Backgrounds ---------- */
