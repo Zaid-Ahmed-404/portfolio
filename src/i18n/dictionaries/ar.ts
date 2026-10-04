@@ -173,12 +173,24 @@ export const ar: Dictionary = {
     channels: { email: "البريد", phone: "الهاتف", linkedin: "لينكدإن", github: "GitHub" },
   },
 
+  fx: {
+    loading: "جارٍ تحميل التجربة",
+    skipIntro: "تخطي المقدمة",
+    scroll: "مرّر",
+    view: "عرض",
+    drag: "اسحب",
+    open: "فتح",
+    core: "مرحبًا",
+    dragHint: "اسحب للتدوير",
+    galleryHint: "مرّر للاستكشاف",
+  },
+
   footer: {
     tagline: "مهندس برمجيات Full-Stack أبني تطبيقات قابلة للتوسع وجاهزة للإنتاج باستخدام Spring Boot وLaravel وFlutter.",
     navigate: "تصفّح",
     connect: "تواصل",
     email: "البريد",
     rights: "© {year} زيد أحمد. جميع الحقوق محفوظة.",
-    builtWith: "صُمّم وبُني باستخدام Next.js · Tailwind CSS",
+    builtWith: "صُمّم وبُني باستخدام Next.js · Tailwind CSS · three.js",
   },
 };

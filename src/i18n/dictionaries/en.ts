@@ -179,6 +179,19 @@ export const en = {
     channels: { email: "Email", phone: "Phone", linkedin: "LinkedIn", github: "GitHub" },
   },
 
+  /** Labels for motion/3D UI: loader, custom cursor, scroll hints. */
+  fx: {
+    loading: "Loading experience",
+    skipIntro: "Skip intro",
+    scroll: "Scroll",
+    view: "View",
+    drag: "Drag",
+    open: "Open",
+    core: "Say hi",
+    dragHint: "Drag to rotate",
+    galleryHint: "Scroll to explore",
+  },
+
   footer: {
     tagline:
       "Full-Stack Software Engineer building scalable, production-grade applications with Spring Boot, Laravel, and Flutter.",
@@ -186,7 +199,7 @@ export const en = {
     connect: "Connect",
     email: "Email",
     rights: "© {year} Zaid Ahmed. All rights reserved.",
-    builtWith: "Designed & built with Next.js · Tailwind CSS",
+    builtWith: "Designed & built with Next.js · Tailwind CSS · three.js",
   },
 };
 

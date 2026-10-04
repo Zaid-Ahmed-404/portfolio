@@ -1,103 +1,103 @@
 {
   "workData": [
     {
-      "image": "/images/work/fatora.png",
+      "image": "/images/work/fatora.webp",
       "title": "Fatora",
       "slug": "SAAS",
       "href": "https://fatora.cloud/"
     },
     {
-      "image": "/images/work/ksalaunchpad.png",
+      "image": "/images/work/ksalaunchpad.webp",
       "title": "KSA Launchpad",
       "slug": "SAAS",
       "href": "https://ksalaunchpad.com/"
     },
     {
-      "image": "/images/work/enfohub.png",
+      "image": "/images/work/enfohub.webp",
       "title": "Enfohub",
       "slug": "SAAS",
       "href": "https://enfohub.com/"
     },
     {
-      "image": "/images/work/EasyFit.png",
+      "image": "/images/work/EasyFit.webp",
       "title": "Easy Fit",
       "slug": "SAAS",
       "href": "https://github.com/Zaid-Ahmed-404/easy-fit"
     },
     {
-      "image": "/images/work/vco.png",
+      "image": "/images/work/vco.webp",
       "title": "VCO",
       "slug": "Website",
       "href": "https://vco.sa/"
     },
     {
-      "image": "/images/work/1.png",
+      "image": "/images/work/1.webp",
       "title": "GrowAndGrown",
       "slug": "Website",
       "href": "https://growandgrown.com/"
     },
     {
-      "image": "/images/work/byb.png",
+      "image": "/images/work/byb.webp",
       "title": "BYB",
       "slug": "Website",
       "href": "https://byb.sa/"
     },
     {
-      "image": "/images/work/structurelab.png",
+      "image": "/images/work/structurelab.webp",
       "title": "Structure Lab",
       "slug": "Website",
       "href": "https://structurelab.cortalogixguild.com//"
     },
     {
-      "image": "/images/work/2.png",
+      "image": "/images/work/2.webp",
       "title": "BuildxSmart",
       "slug": "Website",
       "href": "https://buildxsmart.sa/"
     },
     {
-      "image": "/images/work/speak_and_translate.png",
+      "image": "/images/work/speak_and_translate.webp",
       "title": "Speak and Translate",
       "slug": "App",
       "href": "https://play.google.com/store/apps/details?id=com.parityzone.speakandtranslate&hl=en"
     },
     {
-      "image": "/images/work/riser.png",
+      "image": "/images/work/riser.webp",
       "title": "RISER: Jobs, Video & Career AI",
       "slug": "App",
       "href": "https://apps.apple.com/us/app/riser-jobs-video-career-ai/id6476504113"
     },
     {
-      "image": "/images/work/backgroundremover.png",
+      "image": "/images/work/backgroundremover.webp",
       "title": "Ai Image Background Changer",
       "slug": "App",
       "href": "https://play.google.com/store/apps/details?id=com.meraki.background.changer.app&hl=en"
     },
     {
-      "image": "/images/work/AI-Magic-Box.png",
+      "image": "/images/work/AI-Magic-Box.webp",
       "title": "AI Magic Box",
       "slug": "App",
       "href": "https://github.com/ZaidAhmed404/AI-Magic-Box"
     },
     {
-      "image": "/images/work/Alert-Mate.png",
+      "image": "/images/work/Alert-Mate.webp",
       "title": "Alert Mate",
       "slug": "App",
       "href": "https://github.com/ZaidAhmed404/Alert-Mate"
     },
     {
-      "image": "/images/work/Sehat-Sakoon.png",
+      "image": "/images/work/Sehat-Sakoon.webp",
       "title": "Sehat Sakoon",
       "slug": "App",
       "href": "https://github.com/ZaidAhmed404/Sehat-Sakoon"
     },
     {
-      "image": "/images/work/Shop-Swift.png",
+      "image": "/images/work/Shop-Swift.webp",
       "title": "Shop Swift",
       "slug": "App",
       "href": "https://github.com/ZaidAhmed404/Shop-Swift"
     },
     {
-      "image": "/images/work/miracle.png",
+      "image": "/images/work/miracle.webp",
       "title": "Miracle: AI Art Generator Tool",
       "slug": "App",
       "href": "https://www.appbrain.com/app/miracle-ai-art-generator-tool/com.meraki.ai.art.generator"

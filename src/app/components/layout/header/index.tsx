@@ -2,11 +2,11 @@
 
 import { navLinks, profile } from "@/data/content";
 import { getDictionary, type Locale } from "@/i18n";
+import { lockScroll } from "@/lib/gsap";
 import { getImgPath } from "@/utils/image";
 import { useEffect, useState } from "react";
 import { Download } from "../../shared/icons";
 import LanguageSwitch from "../../shared/language-switch";
-import ThemeToggle from "../../shared/theme-toggle";
 import Logo from "../logo";
 
 const Header = ({ locale }: { locale: Locale }) => {
@@ -42,10 +42,9 @@ const Header = ({ locale }: { locale: Locale }) => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    if (!menuOpen) return;
+    lockScroll(true);
+    return () => lockScroll(false);
   }, [menuOpen]);
 
   return (
@@ -53,7 +52,7 @@ const Header = ({ locale }: { locale: Locale }) => {
       <nav
         className={`mx-auto flex max-w-[72rem] items-center justify-between rounded-full border py-2 ps-4 pe-2 transition-all duration-500 sm:ps-5 ${
           scrolled || menuOpen
-            ? "border-line bg-bg/75 shadow-card backdrop-blur-xl"
+            ? "border-line bg-bg/60 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.9)] backdrop-blur-xl"
             : "border-transparent bg-transparent"
         }`}
       >
@@ -76,11 +75,10 @@ const Header = ({ locale }: { locale: Locale }) => {
 
         <div className="flex items-center gap-1.5">
           <LanguageSwitch locale={locale} />
-          <ThemeToggle locale={locale} />
           <a
             href={getImgPath(profile.resume)}
             download
-            className="btn-primary hidden !py-2 !px-4 sm:inline-flex"
+            className="btn-ghost hidden !py-2 !px-4 sm:inline-flex"
           >
             <Download size={15} />
             {t.resume}
@@ -100,7 +98,7 @@ const Header = ({ locale }: { locale: Locale }) => {
       </nav>
 
       <div
-        className={`mx-auto mt-2 max-w-[72rem] overflow-hidden rounded-3xl border border-line bg-bg/95 shadow-card backdrop-blur-xl transition-all duration-500 lg:hidden ${
+        className={`mx-auto mt-2 max-w-[72rem] overflow-hidden rounded-3xl border border-line bg-bg/95 backdrop-blur-xl transition-all duration-500 lg:hidden ${
           menuOpen ? "max-h-[28rem] opacity-100" : "pointer-events-none max-h-0 border-transparent opacity-0"
         }`}
       >

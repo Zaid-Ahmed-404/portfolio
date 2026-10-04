@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { dirOf, getDictionary, localeHome, type Locale } from "@/i18n";
+import { defaultLocale, dirOf, getDictionary, localeHome, type Locale } from "@/i18n";
 import { fontVariables } from "../fonts";
 import "../globals.css";
 import Footer from "./layout/footer";
@@ -23,7 +23,7 @@ export const buildMetadata = (locale: Locale): Metadata => {
       languages: {
         ar: `${basePath}${localeHome("ar")}`,
         en: `${basePath}${localeHome("en")}`,
-        "x-default": `${basePath}${localeHome("ar")}`,
+        "x-default": `${basePath}${localeHome(defaultLocale)}`,
       },
     },
     openGraph: {
@@ -36,20 +36,29 @@ export const buildMetadata = (locale: Locale): Metadata => {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
-    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
-  ],
+  themeColor: "#0a0a0b",
+  colorScheme: "dark",
 };
+
+/**
+ * Runs before paint: marks JS as available (enables the reveal/loader states in
+ * globals.css) and, as a safety net, reveals everything if the app never hydrates.
+ */
+const bootScript =
+  'document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("is-ready")},4000);';
 
 const RootShell = ({ locale, children }: { locale: Locale; children: ReactNode }) => (
   <html lang={locale} dir={dirOf(locale)} suppressHydrationWarning>
+    <head>
+      <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+    </head>
     <body className={fontVariables}>
-      <Providers>
+      <Providers locale={locale}>
         <Header locale={locale} />
         {children}
         <Footer locale={locale} />
       </Providers>
+      <div aria-hidden className="grain" />
     </body>
   </html>
 );

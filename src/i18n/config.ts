@@ -4,7 +4,7 @@ export const locales = ["ar", "en"] as const;
 
 export type Locale = (typeof locales)[number];
 
-export const defaultLocale: Locale = "ar";
+export const defaultLocale: Locale = "en";
 
 export const dirOf = (locale: Locale) => (locale === "ar" ? "rtl" : "ltr");
 

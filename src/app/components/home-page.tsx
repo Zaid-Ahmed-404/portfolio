@@ -5,13 +5,16 @@ import Contact from "./home/contact";
 import EducationSkills from "./home/education-skills";
 import ExperienceSec from "./home/experience-sec";
 import HeroSection from "./home/hero-section";
+import Journey from "./home/journey";
 import LatestWork from "./home/latest-work";
 
 const HomePage = ({ locale }: { locale: Locale }) => {
   return (
     <main>
-      <HeroSection locale={locale} />
-      <AboutMe locale={locale} />
+      <Journey locale={locale}>
+        <HeroSection locale={locale} />
+        <AboutMe locale={locale} />
+      </Journey>
       <ExperienceSec locale={locale} />
       <EducationSkills locale={locale} />
       <LatestWork locale={locale} />
