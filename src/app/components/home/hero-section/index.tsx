@@ -1,11 +1,11 @@
 import { currentExperience as current, profile, stack } from "@/data/content";
 import { getDictionary, type Locale } from "@/i18n";
 import { getImgPath } from "@/utils/image";
-import Image from "next/image";
 import type { CSSProperties } from "react";
 import Magnetic from "../../fx/magnetic";
 import SplitTitle from "../../fx/split-title";
 import CopyEmail from "../../shared/copy-email";
+import DevAvatarArt from "../../shared/dev-avatar-art";
 import { ArrowRight, Download, Github, Linkedin, MapPin } from "../../shared/icons";
 import { Rich } from "../../shared/rich-text";
 
@@ -85,17 +85,10 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
             </div>
           </div>
 
-          {/* Portrait slot: the WebGL card is laid exactly over this box (see three/portrait-card) */}
+          {/* Avatar slot: the WebGL developer is laid exactly over this box (see three/dev-avatar) */}
           <div className="intro-fade order-1 mx-auto w-[min(64vw,20rem)] lg:order-2 lg:w-full lg:max-w-[25rem]" style={delay(300)}>
             <figure data-hero-portrait className="relative aspect-[4/5]">
-              <Image
-                src={getImgPath(profile.portraits.hero)}
-                alt={t.portraitAlt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 400px, 64vw"
-                className="rounded-[1.4rem] object-cover transition-opacity duration-700"
-              />
+              <DevAvatarArt />
 
               <figcaption className="no-print absolute -start-6 top-8 hidden rounded-2xl border border-line bg-bg/70 px-4 py-3 backdrop-blur-xl sm:block lg:-start-14">
                 <span className="block font-mono text-[10px] uppercase tracking-widest text-muted">{t.currently}</span>

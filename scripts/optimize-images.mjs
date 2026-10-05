@@ -1,7 +1,7 @@
 /**
- * Converts the heavy PNG screenshots to resized WebP files next to the originals,
- * and cuts the portrait photos into 4:5 crops. The site (and the WebGL scenes,
- * which use them as textures) loads the .webp versions; the originals stay as sources.
+ * Converts the heavy PNG screenshots to resized WebP files next to the originals.
+ * The site (and the WebGL scenes, which use them as textures) loads the .webp
+ * versions; the originals stay as sources.
  *
  *   npm run images
  */
@@ -29,20 +29,4 @@ for (const { dir, width, quality } of folders) {
       .toFile(output);
     console.log(`${dir}/${file}: ${kb((await stat(input)).size)} -> ${kb(info.size)}`);
   }
-}
-
-/* Portraits: 4:5 crops framed on the subject (coordinates in the 960×1280 originals). */
-const portraits = [
-  { input: "home/banner/my.jpeg", output: "home/banner/portrait-hero.webp", crop: { left: 180, top: 250, width: 640, height: 800 } },
-  { input: "home/banner/my 1.jpeg", output: "home/banner/portrait-about.webp", crop: { left: 40, top: 400, width: 560, height: 700 } },
-];
-
-for (const { input, output, crop } of portraits) {
-  const info = await sharp(path.join(root, input))
-    .rotate()
-    .extract(crop)
-    .resize({ width: 800, height: 1000, fit: "cover" })
-    .webp({ quality: 82, effort: 6 })
-    .toFile(path.join(root, output));
-  console.log(`${input} -> ${output}: ${kb(info.size)}`);
 }

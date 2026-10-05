@@ -10,7 +10,7 @@ import { BlendFunction } from "postprocessing";
 import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { Vector2 } from "three";
 import Embers from "./embers";
-import PortraitCard from "./portrait-card";
+import DevAvatar from "./dev-avatar";
 
 export interface HeroSceneProps {
   device: Device;
@@ -18,9 +18,8 @@ export interface HeroSceneProps {
   active: boolean;
   /** The hero + about wrapper: receives the pointer events for the scene. */
   trackRef: RefObject<HTMLElement | null>;
-  portraitSrc: string;
   hoverLabel: string;
-  /** Called once the portrait texture is ready (true) or failed (false). */
+  /** Called once the 3D avatar is ready (true) or failed (false). */
   onPortrait: (ok: boolean) => void;
 }
 
@@ -33,7 +32,7 @@ const ReadySignal = ({ onReady }: { onReady: () => void }) => {
   return null;
 };
 
-const HeroScene = ({ device, active, trackRef, portraitSrc, hoverLabel, onPortrait }: HeroSceneProps) => {
+const HeroScene = ({ device, active, trackRef, hoverLabel, onPortrait }: HeroSceneProps) => {
   const high = device.tier === "high";
   const animate = !device.reducedMotion;
   const [dprMax, setDprMax] = useState(device.dpr[1]);
@@ -60,8 +59,7 @@ const HeroScene = ({ device, active, trackRef, portraitSrc, hoverLabel, onPortra
       {high && <color attach="background" args={[BG]} />}
 
       <Embers count={high ? 1100 : 380} hdr={high} animate={animate} bounds={[20, 12, 14]} scrollBoost />
-      <PortraitCard
-        src={portraitSrc}
+      <DevAvatar
         selector="[data-hero-portrait]"
         hdr={high}
         animate={animate}

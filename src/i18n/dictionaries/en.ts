@@ -46,7 +46,6 @@ export const en = {
       "I'm **Zaid Ahmed**, a full-stack software engineer specializing in **Spring Boot**, **Laravel** and **Flutter** — designing secure APIs, cloud-native microservices and production-grade apps for international clients.",
     viewWork: "View selected work",
     downloadResume: "Download resume",
-    portraitAlt: "Portrait of Zaid Ahmed",
     currently: "Currently",
     yearsBuilding: ["years building", "production systems"],
   },

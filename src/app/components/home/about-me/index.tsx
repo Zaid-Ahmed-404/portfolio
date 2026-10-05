@@ -1,10 +1,9 @@
-import { currentExperience as current, profile } from "@/data/content";
+import { currentExperience as current } from "@/data/content";
 import { getDictionary, type Locale } from "@/i18n";
-import { getImgPath } from "@/utils/image";
-import Image from "next/image";
 import Counter from "../../fx/counter";
 import Reveal from "../../fx/reveal";
 import { ArrowUpRight, Briefcase, Globe, MapPin } from "../../shared/icons";
+import DevAvatarArt from "../../shared/dev-avatar-art";
 import SectionHeading from "../../shared/section-heading";
 
 const AboutMe = ({ locale }: { locale: Locale }) => {
@@ -38,18 +37,15 @@ const AboutMe = ({ locale }: { locale: Locale }) => {
             </div>
           </Reveal>
 
-          {/* Portrait */}
+          {/* Avatar */}
           <Reveal delay={80} className="md:col-span-2">
             <figure className="glass relative h-full min-h-[22rem] overflow-hidden p-2">
               <div className="relative h-full min-h-[21rem] overflow-hidden rounded-[1.25rem]">
-                <Image
-                  src={getImgPath(profile.portraits.about)}
-                  alt={dict.hero.portraitAlt}
-                  fill
-                  sizes="(min-width: 768px) 360px, 100vw"
-                  className="object-cover object-top saturate-[0.8] transition-[filter,scale] duration-700 hover:scale-[1.03] hover:saturate-100"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(var(--accent-rgb),0.18),transparent_70%)]" />
+                <div className="absolute inset-x-0 bottom-16 top-4">
+                  <DevAvatarArt />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 to-transparent" />
                 <figcaption className="absolute inset-x-4 bottom-4">
                   <p className="font-display text-lg font-semibold !text-white">{dict.profile.name}</p>
                   <p className="text-sm !text-white/70">{dict.profile.role}</p>

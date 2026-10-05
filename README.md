@@ -14,7 +14,7 @@ Deployed to GitHub Pages at `/portfolio`.
 │   ├── data/               # page-data.json, work-data.json, resume PDF
 │   └── images/             # PNG/JPEG sources + generated .webp (what the site loads)
 ├── scripts/
-│   └── optimize-images.mjs # PNG → resized WebP, portrait crops from my.jpeg / my 1.jpeg
+│   └── optimize-images.mjs # PNG → resized WebP for the project screenshots
 └── src/
     ├── app/
     │   ├── (en)/ (ar)/     # English at /, Arabic (RTL) at /ar/
@@ -28,8 +28,8 @@ Deployed to GitHub Pages at `/portfolio`.
     │       │   ├── split-title.tsx    # Staggered letter reveal (whole words for Arabic)
     │       │   ├── counter.tsx · magnetic.tsx · tilt.tsx · reveal.tsx
     │       ├── three/      # WebGL — always loaded with next/dynamic({ ssr: false })
-    │       │   ├── hero-scene.tsx     # Hero + About backdrop: portrait card, embers, bloom
-    │       │   ├── portrait-card.tsx  # Photo as a WebGL card over its DOM slot (dissolve-in, grade, tilt)
+    │       │   ├── hero-scene.tsx     # Hero + About backdrop: 3D developer avatar, embers, bloom
+    │       │   ├── dev-avatar.tsx     # Procedural 3D developer over its DOM slot (types, blinks, waves on hover)
     │       │   ├── orbit-rings.tsx    # Tilted orbits with travelling satellites
     │       │   ├── embers.tsx         # GPU-animated rising ember particles
     │       │   ├── skills-sphere.tsx  # Draggable sphere of skill logos and tags
@@ -39,7 +39,7 @@ Deployed to GitHub Pages at `/portfolio`.
     │       ├── home/       # Sections: journey (hero+about wrapper), hero-section, about-me,
     │       │               # experience-sec, education-skills, latest-work, certificates, contact
     │       ├── layout/     # header, footer, logo
-    │       └── shared/     # icons, copy-email, language-switch, rich-text, section-heading
+    │       └── shared/     # icons, copy-email, dev-avatar-art (SVG fallback), language-switch, rich-text, section-heading
     ├── data/content.ts     # Language-independent data (links, tech names, projects)
     ├── i18n/               # Locale config + dictionaries (en.ts defines the shape, ar.ts matches)
     ├── lib/                # device tiers, GSAP/Lenis handles, shared stores, theme colors
@@ -53,7 +53,7 @@ All visible copy lives in `src/i18n/dictionaries/` — `en.ts` defines the shape
 and `ar.ts` must match it (TypeScript enforces this). Brand names, links and
 tech names stay shared in `src/data/content.ts` and `public/data/*.json`.
 
-RTL is handled with logical properties and `rtl:` variants. The 3D portrait card follows
+RTL is handled with logical properties and `rtl:` variants. The 3D developer avatar follows
 its CSS slot, so it mirrors for Arabic along with the work index and the
 skills sphere's idle spin.
 
