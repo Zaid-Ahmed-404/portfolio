@@ -43,8 +43,6 @@ export const ar: Dictionary = {
       "أنا **زيد أحمد**، مهندس برمجيات Full-Stack متخصص في **Spring Boot** و**Laravel** و**Flutter** — أصمم واجهات برمجية آمنة وخدمات مصغّرة سحابية وتطبيقات جاهزة للإنتاج لعملاء دوليين.",
     viewWork: "استعرض أعمالي",
     downloadResume: "تحميل السيرة الذاتية",
-    currently: "حاليًا",
-    yearsBuilding: ["سنوات في بناء", "أنظمة الإنتاج"],
   },
 
   about: {
@@ -179,7 +177,6 @@ export const ar: Dictionary = {
     view: "عرض",
     drag: "اسحب",
     open: "فتح",
-    core: "مرحبًا",
     dragHint: "اسحب للتدوير",
     galleryHint: "مرّر للاستكشاف",
   },

@@ -1,12 +1,11 @@
-import { currentExperience as current, profile, stack } from "@/data/content";
+import { profile, stack } from "@/data/content";
 import { getDictionary, type Locale } from "@/i18n";
 import { getImgPath } from "@/utils/image";
 import type { CSSProperties } from "react";
 import Magnetic from "../../fx/magnetic";
 import SplitTitle from "../../fx/split-title";
 import CopyEmail from "../../shared/copy-email";
-import DevAvatarArt from "../../shared/dev-avatar-art";
-import { ArrowRight, Download, Github, Linkedin, MapPin } from "../../shared/icons";
+import { ArrowRight, Download, Github, Linkedin } from "../../shared/icons";
 import { Rich } from "../../shared/rich-text";
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
@@ -18,9 +17,9 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
   return (
     <>
       <section id="home" className="relative flex min-h-svh flex-col">
-        <div className="container relative grid flex-1 items-center gap-12 pb-14 pt-28 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16 lg:pb-20 lg:pt-32">
+        <div className="container relative grid flex-1 items-center pb-14 pt-28 lg:pb-20 lg:pt-32">
           {/* Copy */}
-          <div className="order-2 flex flex-col gap-7 lg:order-1 lg:gap-8">
+          <div className="flex flex-col gap-7 lg:gap-8">
             <span className="intro-fade chip w-fit !py-1.5 !ps-2.5 !pe-3.5 backdrop-blur-md" style={delay(0)}>
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70 motion-reduce:animate-none" />
@@ -85,32 +84,6 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
             </div>
           </div>
 
-          {/* Avatar slot: the WebGL developer is laid exactly over this box (see three/dev-avatar) */}
-          <div className="intro-fade order-1 mx-auto w-[min(64vw,20rem)] lg:order-2 lg:w-full lg:max-w-[25rem]" style={delay(300)}>
-            <figure data-hero-portrait className="relative aspect-[4/5]">
-              <DevAvatarArt />
-
-              <figcaption className="no-print absolute -start-6 top-8 hidden rounded-2xl border border-line bg-bg/70 px-4 py-3 backdrop-blur-xl sm:block lg:-start-14">
-                <span className="block font-mono text-[10px] uppercase tracking-widest text-muted">{t.currently}</span>
-                <span className="mt-0.5 block text-sm font-medium text-fg">{dict.experience.items[current.id].title}</span>
-                <span className="block text-xs text-body">@ {current.company}</span>
-              </figcaption>
-
-              <div className="no-print absolute -end-4 bottom-16 hidden items-center gap-3 rounded-2xl border border-line bg-bg/70 px-4 py-3 backdrop-blur-xl sm:flex lg:-end-8">
-                <span dir="ltr" className="font-display text-3xl font-bold tracking-tight text-accent-bright">4+</span>
-                <span className="text-xs leading-tight text-body">
-                  {t.yearsBuilding[0]}
-                  <br />
-                  {t.yearsBuilding[1]}
-                </span>
-              </div>
-
-              <span className="absolute inset-x-4 -bottom-11 flex items-center justify-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                <MapPin size={12} />
-                {dict.profile.name} · {dict.profile.locationShort}
-              </span>
-            </figure>
-          </div>
         </div>
 
         {/* Scroll indicator */}

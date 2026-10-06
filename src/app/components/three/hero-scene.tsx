@@ -1,16 +1,15 @@
 "use client";
 
 import type { Device } from "@/lib/device";
-import { completeTask, setSceneCursor } from "@/lib/store";
+import { completeTask } from "@/lib/store";
 import { BG } from "@/lib/theme";
 import { PerformanceMonitor } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Bloom, ChromaticAberration, EffectComposer } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
-import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import { useMemo, useRef, useState, type RefObject } from "react";
 import { Vector2 } from "three";
 import Embers from "./embers";
-import DevAvatar from "./dev-avatar";
 
 export interface HeroSceneProps {
   device: Device;
@@ -18,9 +17,6 @@ export interface HeroSceneProps {
   active: boolean;
   /** The hero + about wrapper: receives the pointer events for the scene. */
   trackRef: RefObject<HTMLElement | null>;
-  hoverLabel: string;
-  /** Called once the 3D avatar is ready (true) or failed (false). */
-  onPortrait: (ok: boolean) => void;
 }
 
 /** Tells the loader the scene is live once its first frame has rendered. */
@@ -32,19 +28,12 @@ const ReadySignal = ({ onReady }: { onReady: () => void }) => {
   return null;
 };
 
-const HeroScene = ({ device, active, trackRef, hoverLabel, onPortrait }: HeroSceneProps) => {
+const HeroScene = ({ device, active, trackRef }: HeroSceneProps) => {
   const high = device.tier === "high";
   const animate = !device.reducedMotion;
   const [dprMax, setDprMax] = useState(device.dpr[1]);
   const [ready, setReady] = useState(false);
   const chroma = useMemo(() => new Vector2(0.0008, 0.001), []);
-
-  useEffect(() => () => setSceneCursor(null), []);
-
-  const onHover = useCallback(
-    (h: boolean) => setSceneCursor(h ? "core" : null, h ? hoverLabel : ""),
-    [hoverLabel]
-  );
 
   return (
     <Canvas
@@ -59,13 +48,6 @@ const HeroScene = ({ device, active, trackRef, hoverLabel, onPortrait }: HeroSce
       {high && <color attach="background" args={[BG]} />}
 
       <Embers count={high ? 1100 : 380} hdr={high} animate={animate} bounds={[20, 12, 14]} scrollBoost />
-      <DevAvatar
-        selector="[data-hero-portrait]"
-        hdr={high}
-        animate={animate}
-        onHover={device.coarse ? undefined : onHover}
-        onLoaded={onPortrait}
-      />
 
       <ReadySignal
         onReady={() => {

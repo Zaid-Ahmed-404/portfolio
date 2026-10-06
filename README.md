@@ -28,9 +28,8 @@ Deployed to GitHub Pages at `/portfolio`.
     │       │   ├── split-title.tsx    # Staggered letter reveal (whole words for Arabic)
     │       │   ├── counter.tsx · magnetic.tsx · tilt.tsx · reveal.tsx
     │       ├── three/      # WebGL — always loaded with next/dynamic({ ssr: false })
-    │       │   ├── hero-scene.tsx     # Hero + About backdrop: 3D developer avatar, embers, bloom
-    │       │   ├── dev-avatar.tsx     # Procedural 3D developer over its DOM slot (types, blinks, waves on hover)
-    │       │   ├── orbit-rings.tsx    # Tilted orbits with travelling satellites
+    │       │   ├── hero-scene.tsx     # Hero + About backdrop: embers, bloom
+        │       │   ├── orbit-rings.tsx    # Tilted orbits with travelling satellites
     │       │   ├── embers.tsx         # GPU-animated rising ember particles
     │       │   ├── skills-sphere.tsx  # Draggable sphere of skill logos and tags
     │       │   ├── work-distortion.tsx# Shader overlay for the cursor-following project preview
@@ -39,7 +38,7 @@ Deployed to GitHub Pages at `/portfolio`.
     │       ├── home/       # Sections: journey (hero+about wrapper), hero-section, about-me,
     │       │               # experience-sec, education-skills, latest-work, certificates, contact
     │       ├── layout/     # header, footer, logo
-    │       └── shared/     # icons, copy-email, dev-avatar-art (SVG fallback), language-switch, rich-text, section-heading
+    │       └── shared/     # icons, copy-email, language-switch, rich-text, section-heading
     ├── data/content.ts     # Language-independent data (links, tech names, projects)
     ├── i18n/               # Locale config + dictionaries (en.ts defines the shape, ar.ts matches)
     ├── lib/                # device tiers, GSAP/Lenis handles, shared stores, theme colors
@@ -53,9 +52,8 @@ All visible copy lives in `src/i18n/dictionaries/` — `en.ts` defines the shape
 and `ar.ts` must match it (TypeScript enforces this). Brand names, links and
 tech names stay shared in `src/data/content.ts` and `public/data/*.json`.
 
-RTL is handled with logical properties and `rtl:` variants. The 3D developer avatar follows
-its CSS slot, so it mirrors for Arabic along with the work index and the
-skills sphere's idle spin.
+RTL is handled with logical properties and `rtl:` variants. The work index and the skills sphere's idle
+spin mirror for Arabic.
 
 Fonts: Syne (display) and Geist (body) come first in every stack, IBM Plex Sans Arabic
 after them. The Latin fonts set `adjustFontFallback: false` because their generated

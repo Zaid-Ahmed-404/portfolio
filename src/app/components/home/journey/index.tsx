@@ -1,35 +1,21 @@
 "use client";
 
-import { dirOf, getDictionary, type Locale } from "@/i18n";
+import { dirOf, type Locale } from "@/i18n";
 import { ScrollTrigger } from "@/lib/gsap";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { useSceneGate } from "../../three/use-scene-gate";
 
 const HeroScene = dynamic(() => import("../../three/hero-scene"), { ssr: false });
 
 /**
- * Wraps Hero + About around one sticky, full-viewport WebGL layer: rising embers
- * behind both sections, and the hero avatar rendered as an animated 3D developer
- * over its DOM placeholder. Without WebGL the SVG avatar simply stays visible.
+ * Wraps Hero + About around one sticky, full-viewport WebGL layer of rising embers
+ * behind both sections. Without WebGL the static gradient backdrop stays.
  */
 const Journey = ({ locale, children }: { locale: Locale; children: ReactNode }) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const dimRef = useRef<HTMLDivElement>(null);
   const { device, mount, active } = useSceneGate(trackRef, { rootMargin: "0px" });
-  const webgl = !!device && device.tier !== "fallback";
-
-  // On WebGL tiers the 3D developer replaces the SVG avatar (CSS: html.hero-3d).
-  useEffect(() => {
-    if (!webgl) return;
-    const root = document.documentElement;
-    root.classList.add("hero-3d");
-    return () => root.classList.remove("hero-3d");
-  }, [webgl]);
-
-  const onPortrait = useCallback((ok: boolean) => {
-    if (!ok) document.documentElement.classList.remove("hero-3d");
-  }, []);
 
   // Dim the scene as the About content takes over, keeping the text readable.
   useEffect(() => {
@@ -62,8 +48,6 @@ const Journey = ({ locale, children }: { locale: Locale; children: ReactNode }) 
               device={device}
               active={active}
               trackRef={trackRef}
-              hoverLabel={getDictionary(locale).fx.core}
-              onPortrait={onPortrait}
             />
           </div>
         )}

@@ -3,7 +3,6 @@ import { getDictionary, type Locale } from "@/i18n";
 import Counter from "../../fx/counter";
 import Reveal from "../../fx/reveal";
 import { ArrowUpRight, Briefcase, Globe, MapPin } from "../../shared/icons";
-import DevAvatarArt from "../../shared/dev-avatar-art";
 import SectionHeading from "../../shared/section-heading";
 
 const AboutMe = ({ locale }: { locale: Locale }) => {
@@ -17,7 +16,7 @@ const AboutMe = ({ locale }: { locale: Locale }) => {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-6">
           {/* Bio + counters */}
-          <Reveal className="md:col-span-4">
+          <Reveal className="md:col-span-6">
             <div className="glass flex h-full flex-col justify-between gap-12 p-7 md:p-10">
               <div className="flex flex-col gap-5">
                 <p className="text-lg leading-relaxed text-fg md:text-2xl md:leading-snug">{t.lead}</p>
@@ -35,23 +34,6 @@ const AboutMe = ({ locale }: { locale: Locale }) => {
                 ))}
               </dl>
             </div>
-          </Reveal>
-
-          {/* Avatar */}
-          <Reveal delay={80} className="md:col-span-2">
-            <figure className="glass relative h-full min-h-[22rem] overflow-hidden p-2">
-              <div className="relative h-full min-h-[21rem] overflow-hidden rounded-[1.25rem]">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(var(--accent-rgb),0.18),transparent_70%)]" />
-                <div className="absolute inset-x-0 bottom-16 top-4">
-                  <DevAvatarArt />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 to-transparent" />
-                <figcaption className="absolute inset-x-4 bottom-4">
-                  <p className="font-display text-lg font-semibold !text-white">{dict.profile.name}</p>
-                  <p className="text-sm !text-white/70">{dict.profile.role}</p>
-                </figcaption>
-              </div>
-            </figure>
           </Reveal>
 
           {/* Current role */}
