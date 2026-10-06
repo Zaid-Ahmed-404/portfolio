@@ -84,7 +84,7 @@ export const coreSkills = pageData.educationData.skills;
 
 type ToolboxItem = string | { t: keyof Dictionary["skills"]["toolboxItems"] };
 
-export const toolbox: { key: keyof Dictionary["skills"]["toolbox"]; items: (string | { t: string })[] }[] = [
+export const toolbox: { key: keyof Dictionary["skills"]["toolbox"]; items: ToolboxItem[] }[] = [
   {
     key: "backend",
     items: [
