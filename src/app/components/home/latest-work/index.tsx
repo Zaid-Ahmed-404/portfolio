@@ -161,7 +161,7 @@ const LatestWork = ({ locale }: { locale: Locale }) => {
                     aria-controls="work-index"
                     onClick={() => selectFilter(cat)}
                     className={`relative inline-flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm transition-colors duration-300 ${
-                      selected ? "text-[#0a0a0b]" : "text-body hover:text-fg"
+                      selected ? "text-ink" : "text-body hover:text-fg"
                     }`}
                   >
                     {selected && (
@@ -270,7 +270,7 @@ const LatestWork = ({ locale }: { locale: Locale }) => {
 
                     <span
                       className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 lg:h-8 lg:w-8 lg:border-0 ${
-                        isCurrent ? "border-accent bg-accent text-[#0a0a0b] lg:bg-transparent lg:text-accent-bright" : "border-line text-muted"
+                        isCurrent ? "border-accent bg-accent text-ink lg:bg-transparent lg:text-accent-bright" : "border-line text-muted"
                       }`}
                     >
                       <ArrowUpRight size={18} className="rtl:-scale-x-100" />

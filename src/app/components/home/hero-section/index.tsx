@@ -12,12 +12,12 @@ const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
 const HeroSection = ({ locale }: { locale: Locale }) => {
   const dict = getDictionary(locale);
-  const t = dict.hero;
+  const t = { ...dict.hero, stats: dict.about.stats };
 
   return (
     <>
       <section id="home" className="relative flex min-h-svh flex-col">
-        <div className="container relative grid flex-1 items-center pb-14 pt-28 lg:pb-20 lg:pt-32">
+        <div className="container relative grid flex-1 items-center gap-10 pb-14 pt-28 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:pb-20 lg:pt-32">
           {/* Copy */}
           <div className="flex flex-col gap-7 lg:gap-8">
             <span className="intro-fade chip w-fit !py-1.5 !ps-2.5 !pe-3.5 backdrop-blur-md" style={delay(0)}>
@@ -33,7 +33,7 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
               title={t.title}
               trigger="ready"
               delay={120}
-              className="text-[clamp(2.7rem,6.4vw,6rem)] font-bold leading-[0.98] tracking-[-0.04em]"
+              className="text-[clamp(2.7rem,5.2vw,5rem)] font-bold leading-[0.98] tracking-[-0.04em]"
             />
 
             <p className="intro-fade max-w-xl text-base leading-relaxed md:text-lg" style={delay(550)}>
@@ -84,6 +84,27 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
             </div>
           </div>
 
+          {/* Stage: the 3D core (rendered by the fixed world canvas) settles inside this frame */}
+          <div data-core aria-hidden className="intro-fade relative hidden aspect-square w-full lg:block" style={delay(400)}>
+            <span className="absolute start-0 top-0 h-5 w-5 border-s border-t border-line-strong" />
+            <span className="absolute end-0 top-0 h-5 w-5 border-e border-t border-line-strong" />
+            <span className="absolute bottom-0 start-0 h-5 w-5 border-b border-s border-line-strong" />
+            <span className="absolute bottom-0 end-0 h-5 w-5 border-b border-e border-line-strong" />
+
+            {[t.stats[0], t.stats[2]].map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`glass float absolute flex flex-col gap-1 !rounded-2xl px-5 py-4 ${
+                  i === 0 ? "start-5 top-8" : "bottom-8 end-5 [animation-delay:-3s]"
+                }`}
+              >
+                <span dir="ltr" className="font-display text-3xl font-semibold tracking-[-0.04em] text-fg rtl:text-end">
+                  {stat.value}
+                </span>
+                <span className="text-xs text-body">{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -113,7 +134,7 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
                 <span
                   key={i}
                   aria-hidden={i >= stack.length}
-                  className="flex items-center gap-8 pr-8 font-display text-xl font-bold uppercase tracking-tight text-[#0a0a0b] md:text-2xl"
+                  className="flex items-center gap-8 pr-8 font-display text-xl font-bold uppercase tracking-tight text-ink md:text-2xl"
                 >
                   {item}
                   <span className="text-base">✺</span>

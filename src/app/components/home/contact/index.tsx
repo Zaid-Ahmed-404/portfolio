@@ -2,22 +2,15 @@
 
 import { profile } from "@/data/content";
 import { getDictionary, type Locale } from "@/i18n";
-import dynamic from "next/dynamic";
-import { useRef } from "react";
 import Magnetic from "../../fx/magnetic";
 import Reveal from "../../fx/reveal";
 import SplitTitle from "../../fx/split-title";
 import CopyEmail from "../../shared/copy-email";
 import { ArrowUpRight, Github, Linkedin, Mail, Phone } from "../../shared/icons";
-import { useSceneGate } from "../../three/use-scene-gate";
-
-const ContactScene = dynamic(() => import("../../three/contact-scene"), { ssr: false });
 
 const Contact = ({ locale }: { locale: Locale }) => {
   const dict = getDictionary(locale);
   const t = dict.contact;
-  const sectionRef = useRef<HTMLElement>(null);
-  const { device, mount, active } = useSceneGate(sectionRef);
 
   const channels = [
     { label: t.channels.email, value: profile.email, href: `mailto:${profile.email}`, Icon: Mail },
@@ -27,17 +20,9 @@ const Contact = ({ locale }: { locale: Locale }) => {
   ];
 
   return (
-    <section ref={sectionRef} id="contact" className="relative overflow-hidden border-t border-line">
-      {/* Background: a quieter echo of the hero's system */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 [--fx:50%] [--fy:42%]">
-        <div className="scene-fallback absolute inset-0" />
-        {mount && device && (
-          <div className="absolute inset-0 opacity-70">
-            <ContactScene device={device} active={active} />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,11,0.35),rgba(10,10,11,0.95)_75%)]" />
-      </div>
+    <section id="contact" className="relative overflow-hidden border-t border-line">
+      {/* The 3D core comes to rest around the button below ([data-core]); this keeps the copy readable over it. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(var(--bg-rgb),0.2),rgba(var(--bg-rgb),0.85)_75%)]" />
 
       <div className="container relative flex min-h-svh flex-col justify-center py-28 md:py-36">
         <div className="relative flex flex-col items-center gap-8 text-center">
@@ -64,8 +49,9 @@ const Contact = ({ locale }: { locale: Locale }) => {
           <Reveal delay={200} className="flex flex-col items-center gap-8 pt-4">
             <Magnetic strength={0.4}>
               <a
+                data-core
                 href={`mailto:${profile.email}`}
-                className="group relative flex h-40 w-40 flex-col items-center justify-center gap-2 rounded-full bg-accent text-[#0a0a0b] shadow-[0_20px_80px_-20px_rgba(var(--accent-rgb),0.8)] transition-[box-shadow,transform] duration-500 hover:shadow-[0_24px_110px_-16px_rgba(var(--accent-rgb),1)] md:h-48 md:w-48"
+                className="group relative flex h-40 w-40 flex-col items-center justify-center gap-2 rounded-full bg-accent text-ink shadow-[0_20px_80px_-20px_rgba(var(--accent-rgb),0.8)] transition-[box-shadow,transform] duration-500 hover:shadow-[0_24px_110px_-16px_rgba(var(--accent-rgb),1)] md:h-48 md:w-48"
               >
                 <span aria-hidden className="absolute inset-0 rounded-full border border-accent/60 motion-safe:animate-ping [animation-duration:2.6s]" />
                 <Mail size={20} />

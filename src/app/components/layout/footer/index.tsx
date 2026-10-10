@@ -14,7 +14,7 @@ const Footer = ({ locale }: { locale: Locale }) => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line">
+    <footer className="relative z-10 border-t border-line bg-bg/70 backdrop-blur-md">
       <div className="container py-12">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="flex max-w-xs flex-col gap-4">

@@ -3,7 +3,7 @@
 import { ACCENT, EMBER } from "@/lib/theme";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
-import { AdditiveBlending, BufferAttribute, BufferGeometry, Color, ShaderMaterial } from "three";
+import { BufferAttribute, BufferGeometry, Color, ShaderMaterial } from "three";
 
 const vertexShader = /* glsl */ `
   attribute float aSeed;
@@ -42,15 +42,14 @@ const fragmentShader = /* glsl */ `
   void main() {
     float d = length(gl_PointCoord - 0.5);
     float a = pow(smoothstep(0.5, 0.0, d), 1.8);
-    vec3 color = mix(uColorA, uColorB, vHeat * vHeat) * uIntensity;
-    gl_FragColor = vec4(color, a * vAlpha);
+    vec3 color = mix(uColorA, uColorB, vHeat * vHeat);
+    gl_FragColor = vec4(color, a * vAlpha * uIntensity);
+    #include <colorspace_fragment>
   }
 `;
 
 interface EmbersProps {
   count: number;
-  /** Push colors above 1.0 so the bloom pass catches them. */
-  hdr: boolean;
   animate: boolean;
   /** Box the embers live in: [width, height, depth]; centered on the origin, depth towards -z. */
   bounds?: [number, number, number];
@@ -58,10 +57,10 @@ interface EmbersProps {
   scrollBoost?: boolean;
 }
 
-/** Rising ember particles, animated entirely on the GPU (one draw call). */
+/** Rising dust-like particles, animated entirely on the GPU (one draw call). */
 const DEFAULT_BOUNDS: [number, number, number] = [18, 12, 12];
 
-const Embers = ({ count, hdr, animate, bounds = DEFAULT_BOUNDS, scrollBoost = false }: EmbersProps) => {
+const Embers = ({ count, animate, bounds = DEFAULT_BOUNDS, scrollBoost = false }: EmbersProps) => {
   const [w, h, d] = bounds;
   const { gl, invalidate } = useThree();
   const rise = useRef(0);
@@ -91,7 +90,6 @@ const Embers = ({ count, hdr, animate, bounds = DEFAULT_BOUNDS, scrollBoost = fa
       fragmentShader,
       transparent: true,
       depthWrite: false,
-      blending: AdditiveBlending,
       uniforms: {
         uRise: { value: 0 },
         uTime: { value: 0 },
@@ -99,11 +97,11 @@ const Embers = ({ count, hdr, animate, bounds = DEFAULT_BOUNDS, scrollBoost = fa
         uPixelRatio: { value: 1 },
         uColorA: { value: new Color(ACCENT) },
         uColorB: { value: new Color(EMBER) },
-        uIntensity: { value: hdr ? 2.6 : 1.1 },
+        uIntensity: { value: 0.75 },
       },
     });
     return { geometry, material };
-  }, [count, hdr, w, h, d]);
+  }, [count, w, h, d]);
 
   useEffect(
     () => () => {

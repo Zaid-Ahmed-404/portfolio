@@ -8,10 +8,10 @@ import { useEffect, useRef, useState } from "react";
 const DEFAULT = { variant: "default" as CursorVariant, label: "" };
 
 const ringClass: Record<CursorVariant, string> = {
-  default: "h-9 w-9 border-white/30",
+  default: "h-9 w-9 border-fg/30",
   link: "h-14 w-14 border-accent bg-accent/10",
-  view: "h-24 w-24 border-accent bg-accent text-[#0a0a0b]",
-  drag: "h-20 w-20 border-accent/80 bg-black/30 text-accent backdrop-blur-sm",
+  view: "h-24 w-24 border-accent bg-accent text-ink",
+  drag: "h-20 w-20 border-accent/80 bg-white/50 text-accent backdrop-blur-sm",
   core: "h-28 w-28 border-accent/60 text-accent",
   hidden: "h-0 w-0 border-transparent opacity-0",
 };

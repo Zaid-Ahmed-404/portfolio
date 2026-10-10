@@ -6,7 +6,6 @@ import { ACCENT, INK } from "@/lib/theme";
 import { Canvas, useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  AdditiveBlending,
   CanvasTexture,
   Color,
   EdgesGeometry,
@@ -50,10 +49,13 @@ const makeLogoTexture = (src: string, onLoad: () => void) => {
 
   const drawTile = () => {
     ctx.clearRect(0, 0, size, size);
-    ctx.fillStyle = "#fafaf9";
+    ctx.fillStyle = "#ffffff";
+    ctx.strokeStyle = "rgba(22,19,15,0.14)";
+    ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.roundRect(8, 8, size - 16, size - 16, 56);
     ctx.fill();
+    ctx.stroke();
   };
   drawTile();
 
@@ -83,7 +85,7 @@ const makeTagTexture = (text: string, font: string) => {
   canvas.width = width;
   canvas.height = height;
   const ctx = canvas.getContext("2d")!;
-  ctx.fillStyle = "rgba(17,17,19,0.92)";
+  ctx.fillStyle = "rgba(255,255,255,0.95)";
   ctx.strokeStyle = "rgba(234,88,12,0.55)";
   ctx.lineWidth = 2;
   ctx.beginPath();
@@ -153,8 +155,7 @@ const Sphere = ({ logos, tags, animate, dir }: { logos: SkillsSphereProps["logos
     const material = new LineBasicMaterial({
       color: new Color(INK),
       transparent: true,
-      opacity: 0.07,
-      blending: AdditiveBlending,
+      opacity: 0.1,
       depthWrite: false,
     });
     const coreGeometry = new EdgesGeometry(new IcosahedronGeometry(0.42, 0));

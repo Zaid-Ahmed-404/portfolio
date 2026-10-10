@@ -19,23 +19,23 @@ Deployed to GitHub Pages at `/portfolio`.
     ├── app/
     │   ├── (en)/ (ar)/     # English at /, Arabic (RTL) at /ar/
     │   ├── fonts.ts        # Syne (display), Geist, Geist Mono, IBM Plex Sans Arabic
-    │   ├── globals.css     # Theme tokens, glass, grain, split-text, reveal, Lenis CSS
+    │   ├── globals.css     # Light theme tokens, glass, grain, split-text, reveal, Lenis CSS
     │   └── components/
     │       ├── fx/         # Global motion layer
     │       │   ├── smooth-scroll.tsx  # Lenis ↔ GSAP ticker ↔ ScrollTrigger
+    │       │   ├── world-layer.tsx    # Mounts the 3D world (or its static gradient fallback)
     │       │   ├── loader.tsx         # Intro with real progress % (fonts + hero first frame, ≤2s)
     │       │   ├── cursor.tsx         # Custom cursor (links, data-cursor, 3D objects)
     │       │   ├── split-title.tsx    # Staggered letter reveal (whole words for Arabic)
     │       │   ├── counter.tsx · magnetic.tsx · tilt.tsx · reveal.tsx
     │       ├── three/      # WebGL — always loaded with next/dynamic({ ssr: false })
-    │       │   ├── hero-scene.tsx     # Hero + About backdrop: embers, bloom
-        │       │   ├── orbit-rings.tsx    # Tilted orbits with travelling satellites
-    │       │   ├── embers.tsx         # GPU-animated rising ember particles
+    │       │   ├── world.tsx          # The one fixed scene behind the page: dust particles + scroll rig
+    │       │   ├── core.tsx           # The core: noise-displaced porcelain sphere, orange glaze, wire shell
+    │       │   ├── embers.tsx         # GPU-animated rising dust particles
     │       │   ├── skills-sphere.tsx  # Draggable sphere of skill logos and tags
     │       │   ├── work-distortion.tsx# Shader overlay for the cursor-following project preview
-    │       │   ├── contact-scene.tsx  # Orbits around the CTA + a thinner ember field
     │       │   └── use-scene-gate.ts  # Lazy-mount near viewport + pause off-screen + tier gating
-    │       ├── home/       # Sections: journey (hero+about wrapper), hero-section, about-me,
+    │       ├── home/       # Sections: hero-section, about-me,
     │       │               # experience-sec, education-skills, latest-work, certificates, contact
     │       ├── layout/     # header, footer, logo
     │       └── shared/     # icons, copy-email, language-switch, rich-text, section-heading
@@ -61,11 +61,14 @@ fallback face is `local(Arial)`, which has Arabic glyphs and would otherwise bea
 
 ## ⚡ Performance & accessibility
 
-- **Device tiers** (`src/lib/device.ts`): `high` (full scenes + post-processing),
-  `mobile` (fewer particles, no post-processing, DPR ≤ 1.5) and `fallback` (no WebGL,
+- **Device tiers** (`src/lib/device.ts`): `high` (full detail and particle count),
+  `mobile` (fewer particles, lighter geometry, DPR ≤ 1.5) and `fallback` (no WebGL,
   software rendering, low memory or Save-Data → static gradients). DPR is capped at 2.
-- Every scene is code-split, mounts only when its section nears the viewport, and
-  switches to `frameloop="never"` when off-screen. The work overlay runs on `"demand"`.
+- **One world canvas** sits fixed behind the page (`fx/world-layer.tsx` → `three/world.tsx`). Its core
+  moves between per-section poses (`POSES` in `world.tsx`) as you scroll; a section can pin the core
+  to an element by marking it `data-core` (the hero stage and the contact button do).
+- The skills sphere and the work overlay are code-split, mount only when their section nears the
+  viewport, and switch to `frameloop="never"` when off-screen. The work overlay runs on `"demand"`.
 - `prefers-reduced-motion`: no Lenis, no custom cursor, no preview lag,
   static 3D frames, no reveal animations.
 - All content is server-rendered HTML; the canvases are decorative (`aria-hidden`).

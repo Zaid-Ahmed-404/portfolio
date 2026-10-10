@@ -52,7 +52,7 @@ const Header = ({ locale }: { locale: Locale }) => {
       <nav
         className={`mx-auto flex max-w-[72rem] items-center justify-between rounded-full border py-2 ps-4 pe-2 transition-all duration-500 sm:ps-5 ${
           scrolled || menuOpen
-            ? "border-line bg-bg/60 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+            ? "border-line bg-bg/60 shadow-[0_20px_50px_-25px_rgba(70,45,20,0.35)] backdrop-blur-xl"
             : "border-transparent bg-transparent"
         }`}
       >

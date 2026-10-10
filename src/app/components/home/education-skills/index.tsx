@@ -49,14 +49,14 @@ const EducationSkills = ({ locale }: { locale: Locale }) => {
                 <SkillsSphere device={device} active={active} logos={logos} tags={tags} dir={dirOf(locale)} />
               </div>
             ) : device?.tier === "fallback" ? (
-              // Static orbit for devices without (capable) WebGL.
+              // Static ring of logos for devices without (capable) WebGL.
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="absolute h-[70%] w-[70%] rounded-full border border-line" />
                 <span className="absolute h-[42%] w-[42%] rounded-full border border-dashed border-accent/30" />
                 {logos.map((logo, i) => (
                   <span
                     key={logo.name}
-                    className="absolute flex h-14 w-14 items-center justify-center rounded-2xl bg-fg p-3"
+                    className="absolute flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-white p-3"
                     style={
                       {
                         transform: `rotate(${(360 / logos.length) * i}deg) translateY(max(-34vw, -12rem)) rotate(${(-360 / logos.length) * i}deg)`,
@@ -81,7 +81,7 @@ const EducationSkills = ({ locale }: { locale: Locale }) => {
             {coreSkills.map((skill, index) => (
               <Reveal as="li" key={skill.name} delay={index * 50}>
                 <div className="glass flex items-center gap-4 !rounded-2xl px-4 py-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-fg p-2">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-line bg-white p-2">
                     <Image src={getImgPath(skill.icon)} alt="" width={24} height={24} className="h-6 w-6 object-contain" />
                   </span>
                   <span dir="ltr" className="flex-1 text-sm font-medium text-fg rtl:text-end">

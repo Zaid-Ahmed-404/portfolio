@@ -13,7 +13,7 @@ const MIN_MS = 650;
 
 /**
  * Full-screen intro with a real progress percentage: it waits for the web fonts
- * and (on WebGL tiers) the hero scene's first rendered frame. When done it adds
+ * and (on WebGL tiers) the 3D world's first rendered frame. When done it adds
  * `is-ready` to <html>, which kicks off the hero's letter reveal.
  */
 const Loader = ({ locale }: { locale: Locale }) => {
@@ -45,8 +45,8 @@ const Loader = ({ locale }: { locale: Locale }) => {
   }, []);
 
   useEffect(() => {
-    // Only wait for the hero scene when it will actually render on screen now.
-    if (device && device.tier !== "fallback" && window.scrollY < window.innerHeight) registerTask("hero");
+    // The 3D world sits behind the whole page, so it renders wherever the page opens.
+    if (device && device.tier !== "fallback") registerTask("hero");
   }, [device]);
 
   // Ease the displayed number towards the real progress.
